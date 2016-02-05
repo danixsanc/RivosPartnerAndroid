@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -38,6 +39,8 @@ public class Nav_Historial extends AppCompatActivity {
 
     int request_id[] = new int[0];*/
 
+    TextView txt_no_data_detected2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,11 @@ public class Nav_Historial extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Typeface RobotoCondensed_Regular = Typeface.createFromAsset(getAssets(), "RobotoCondensed-Regular.ttf");
+
+        txt_no_data_detected2 = (TextView) findViewById(R.id.txt_no_data_detected2);
+        txt_no_data_detected2.setTypeface(RobotoCondensed_Regular);
 
         /*Preferencias preferencias = new Preferencias(getApplicationContext());
         String Client_Id = preferencias.getClient_Id();

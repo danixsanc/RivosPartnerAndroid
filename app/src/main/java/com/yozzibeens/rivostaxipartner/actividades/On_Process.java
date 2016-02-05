@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -87,7 +88,7 @@ public class On_Process extends AppCompatActivity {
 
 
 
-
+        Typeface RobotoCondensed_Regular = Typeface.createFromAsset(getAssets(), "RobotoCondensed-Regular.ttf");
 
         final Servicios servicios = new Servicios();
         Preferencias preferencias = new Preferencias(getApplicationContext());
@@ -109,6 +110,7 @@ public class On_Process extends AppCompatActivity {
             e.printStackTrace();
         }
         bnt_finalizar = (Button) findViewById(R.id.finalizar);
+        bnt_finalizar.setTypeface(RobotoCondensed_Regular);
         bnt_finalizar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Preferencias preferencias = new Preferencias(getApplicationContext());

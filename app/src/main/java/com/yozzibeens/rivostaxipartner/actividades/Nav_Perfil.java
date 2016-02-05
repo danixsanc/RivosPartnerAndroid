@@ -29,6 +29,13 @@ public class Nav_Perfil extends AppCompatActivity {
     TextView txt_email_user;
     TextView txt_nombre_user;
     Button btn_modifydata;
+    TextView txt_datos_personales,txt_nombre,txt_email,txt_phone;
+
+    //-------------------------------------------------------
+    //================NO SE SI OCUPES ESTOS==================
+    //-------------------------------------------------------
+    TextView textView1s0,textViasdew1s0,textViasdsdfew1s0;
+    //=======================================================
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +46,21 @@ public class Nav_Perfil extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        Typeface RobotoCondensed_Regular = Typeface.createFromAsset(getAssets(), "RobotoCondensed-Regular.ttf");
+
         txt_phone_user = (TextView) findViewById(R.id.txt_phone_user);
+        txt_phone_user.setTypeface(RobotoCondensed_Regular);
         txt_email_user = (TextView) findViewById(R.id.txt_email_user);
+        txt_email_user.setTypeface(RobotoCondensed_Regular);
         txt_nombre_user = (TextView) findViewById(R.id.txt_nombre_user);
+        txt_nombre_user.setTypeface(RobotoCondensed_Regular);
+        txt_datos_personales = (TextView) findViewById(R.id.txt_datos_personales);
+        txt_nombre = (TextView) findViewById(R.id.txt_nombre);
+        txt_nombre.setTypeface(RobotoCondensed_Regular);
+        txt_email = (TextView) findViewById(R.id.txt_email);
+        txt_email.setTypeface(RobotoCondensed_Regular);
+        txt_phone = (TextView) findViewById(R.id.txt_phone);
+        txt_phone.setTypeface(RobotoCondensed_Regular);
 
         final Preferencias preferencias = new Preferencias(getApplicationContext());
         String Cabbie_Id = preferencias.getCabbie_Id();

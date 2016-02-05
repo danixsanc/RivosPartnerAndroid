@@ -3,6 +3,7 @@ package com.yozzibeens.rivostaxipartner;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.StrictMode;
@@ -98,11 +99,13 @@ public class Main extends AppCompatActivity {
             mDrawerMenu.setUp(R.id.left_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar, getSupportActionBar(), this);
 
 
-
+            Typeface RobotoCondensed_Regular = Typeface.createFromAsset(getAssets(), "RobotoCondensed-Regular.ttf");
 
 
             btn_en_proceso = (Button) findViewById(R.id.btn_en_proceso);
+            btn_en_proceso.setTypeface(RobotoCondensed_Regular);
             txt_pendientes = (TextView) findViewById(R.id.text_pendientes);
+            txt_pendientes.setTypeface(RobotoCondensed_Regular);
 
 
 
