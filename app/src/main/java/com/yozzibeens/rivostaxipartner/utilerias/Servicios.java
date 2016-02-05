@@ -22,6 +22,7 @@ public class Servicios {
     private static String update_tag = "update";
     private static String register_gcmId = "Register_GcmId";
     private static String get_request = "Get_Request";
+    private static String get_client = "GetUser";
     private static String verify_all = "Verify_All";
     private static String verify_finalize = "Verify_Finalize";
     private static String get_request_on_process = "Get_Request_On_Process";
@@ -331,6 +332,29 @@ public class Servicios {
             HashMap<String, String> params = new HashMap<>();
             params.put("Tag", get_cabbie_coordinates);
             params.put("Cabbie_Id", Cabbie_Id);
+
+            Log.d("request", "starting");
+            JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);
+
+            if (json != null)
+            {
+                Log.d("JSON result", json.toString());
+                return json;
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public JSONObject getClient(String Client_Id){
+
+        try {
+            HashMap<String, String> params = new HashMap<>();
+            params.put("Tag", get_client);
+            params.put("Client_Id", Client_Id);
 
             Log.d("request", "starting");
             JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);

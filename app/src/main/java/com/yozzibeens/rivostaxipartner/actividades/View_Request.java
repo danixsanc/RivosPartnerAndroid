@@ -3,6 +3,7 @@ package com.yozzibeens.rivostaxipartner.actividades;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -14,6 +15,9 @@ import com.yozzibeens.rivostaxipartner.R;
 import com.yozzibeens.rivostaxipartner.utilerias.Preferencias;
 import com.yozzibeens.rivostaxipartner.utilerias.Servicios;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by danixsanc on 09/01/2016.
  */
@@ -21,7 +25,7 @@ public class View_Request extends AppCompatActivity {
 
     int client_id = 0;
     int request_id = 0;
-    TextView txt_id;
+    TextView txt_id, txt_nombre, txt_telefono;
     Button btn_aceptar;
     int  client_list[];
     int  request_list[];
@@ -39,6 +43,8 @@ public class View_Request extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         txt_id = (TextView) findViewById(R.id.txt_id);
+        txt_nombre = (TextView) findViewById(R.id.txt_nombre);
+        txt_telefono = (TextView) findViewById(R.id.txt_telefono);
         btn_aceptar = (Button) findViewById(R.id.btn_aceptar);
 
         Preferencias preferencias = new Preferencias(this);
@@ -55,6 +61,31 @@ public class View_Request extends AppCompatActivity {
         }
 
         txt_id.setText("id: " + client_id);
+
+
+
+
+        JSONObject json = servicios.getClient(String.valueOf(client_id));
+        try {
+
+            if (json.getString(KEY_SUCCESS) != null) {
+                String res = json.getString(KEY_SUCCESS);
+                if (Integer.parseInt(res) == 1) {
+
+                    JSONObject json_user = json.getJSONObject("User");
+                    String nombre = json_user.getString("Name");
+                    String telefono = json_user.getString("Phone");
+                    txt_nombre.setText(nombre);
+                    txt_telefono.setText(telefono);
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+
 
 
         btn_aceptar.setOnClickListener(new View.OnClickListener() {

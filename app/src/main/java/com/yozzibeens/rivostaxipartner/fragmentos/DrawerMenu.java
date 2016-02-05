@@ -3,6 +3,7 @@ package com.yozzibeens.rivostaxipartner.fragmentos;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -21,6 +22,9 @@ import com.yozzibeens.rivostaxipartner.R;
 import com.yozzibeens.rivostaxipartner.actividades.Nav_Ayuda;
 import com.yozzibeens.rivostaxipartner.actividades.Nav_Historial;
 import com.yozzibeens.rivostaxipartner.actividades.Nav_Perfil;
+import com.yozzibeens.rivostaxipartner.controlador.CabbieController;
+import com.yozzibeens.rivostaxipartner.modelo.Cabbie;
+import com.yozzibeens.rivostaxipartner.utilerias.Preferencias;
 
 
 public class DrawerMenu extends Fragment {
@@ -103,6 +107,23 @@ public class DrawerMenu extends Fragment {
         // Inflate the layout for this fragment
         View view  = inflater.inflate(R.layout.drawer_menu, container, false);
 
+
+        final Preferencias preferencias = new Preferencias(getActivity().getApplicationContext());
+        boolean check = preferencias.getSesion();
+        if (!check)
+        {
+            String Cabbie_Id = preferencias.getCabbie_Id();
+            CabbieController cabbieController = new CabbieController(getActivity().getApplicationContext());
+            Cabbie cabbie;
+            cabbie = cabbieController.obtenerCabbiePorCabbieId(Cabbie_Id);
+            correo = cabbie.getEmail();
+            nombre = cabbie.getName();
+            txtCorreo = (TextView) view.findViewById(R.id.txtCorreo);
+            txtNombre = (TextView) view.findViewById(R.id.txtNombre);
+            txtCorreo.setText(correo);
+            txtNombre.setText(nombre);
+
+        }
 
        /* final Preferencias preferencias = new Preferencias(getActivity().getApplicationContext());
 
