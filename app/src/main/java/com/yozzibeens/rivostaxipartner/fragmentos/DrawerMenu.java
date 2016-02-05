@@ -107,6 +107,8 @@ public class DrawerMenu extends Fragment {
         // Inflate the layout for this fragment
         View view  = inflater.inflate(R.layout.drawer_menu, container, false);
 
+        Typeface RobotoCondensed_Regular = Typeface.createFromAsset(getActivity().getAssets(), "RobotoCondensed-Regular.ttf");
+
 
         final Preferencias preferencias = new Preferencias(getActivity().getApplicationContext());
         boolean check = preferencias.getSesion();
@@ -119,7 +121,9 @@ public class DrawerMenu extends Fragment {
             correo = cabbie.getEmail();
             nombre = cabbie.getName();
             txtCorreo = (TextView) view.findViewById(R.id.txtCorreo);
+            txtCorreo.setTypeface(RobotoCondensed_Regular);
             txtNombre = (TextView) view.findViewById(R.id.txtNombre);
+            txtNombre.setTypeface(RobotoCondensed_Regular);
             txtCorreo.setText(correo);
             txtNombre.setText(nombre);
 

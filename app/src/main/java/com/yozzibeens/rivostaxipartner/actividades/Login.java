@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -41,7 +42,7 @@ public class Login extends Activity {
 
 
     Button btnLogin;
-    Button btn_faqs_login;
+    Button btnOlvidePass;
     EditText inputEmail;
     EditText inputPassword;
     TextView loginErrorMsg;
@@ -62,6 +63,8 @@ public class Login extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
+        Typeface RobotoCondensed_Regular = Typeface.createFromAsset(getAssets(), "RobotoCondensed-Regular.ttf");
+
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
@@ -73,9 +76,15 @@ public class Login extends Activity {
         //mTextStatus = (TextView) findViewById(R.id.mostrar);
 
         inputEmail = (EditText) findViewById(R.id.loginEmail);
+        inputEmail.setTypeface(RobotoCondensed_Regular);
         inputPassword = (EditText) findViewById(R.id.loginPassword);
+        inputPassword.setTypeface(RobotoCondensed_Regular);
         btnLogin = (Button) findViewById(R.id.btnLogin);
+        btnLogin.setTypeface(RobotoCondensed_Regular);
+        btnOlvidePass = (Button) findViewById(R.id.btnOlvidePass);
+        btnOlvidePass.setTypeface(RobotoCondensed_Regular);
         loginErrorMsg = (TextView) findViewById(R.id.login_error);
+        loginErrorMsg.setTypeface(RobotoCondensed_Regular);
         //check_terminos = (CheckBox) findViewById(R.id.check_terminos);
 
         /*btn_faqs_login.setOnClickListener(new View.OnClickListener()

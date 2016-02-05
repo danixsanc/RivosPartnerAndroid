@@ -2,6 +2,7 @@ package com.yozzibeens.rivostaxipartner.actividades;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -42,10 +43,16 @@ public class View_Request extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        Typeface RobotoCondensed_Regular = Typeface.createFromAsset(getAssets(), "RobotoCondensed-Regular.ttf");
+
         txt_id = (TextView) findViewById(R.id.txt_id);
+        txt_id.setTypeface(RobotoCondensed_Regular);
         txt_nombre = (TextView) findViewById(R.id.txt_nombre);
+        txt_nombre.setTypeface(RobotoCondensed_Regular);
         txt_telefono = (TextView) findViewById(R.id.txt_telefono);
+        txt_telefono.setTypeface(RobotoCondensed_Regular);
         btn_aceptar = (Button) findViewById(R.id.btn_aceptar);
+        btn_aceptar.setTypeface(RobotoCondensed_Regular);
 
         Preferencias preferencias = new Preferencias(this);
         final String Cabbie_Id = preferencias.getCabbie_Id();

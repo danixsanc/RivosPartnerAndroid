@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.yozzibeens.rivostaxipartner.R;
 
@@ -31,6 +33,7 @@ public class Nav_Ayuda extends AppCompatActivity {
     Button makeCall;
     EditText input_asunto;
     EditText input_mensaje;
+    TextView Txt_Contact_Us;
     String asunto;
     String mensaje;
 
@@ -39,11 +42,17 @@ public class Nav_Ayuda extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_ayuda);
 
+        final Typeface RobotoCondensed_Regular = Typeface.createFromAsset(getAssets(), "RobotoCondensed-Regular.ttf");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        Txt_Contact_Us = (TextView) findViewById(R.id.Txt_Contact_Us);
+        Txt_Contact_Us.setTypeface(RobotoCondensed_Regular);
+
         makeCall = (Button) findViewById(R.id.btn_makecall);
+        makeCall.setTypeface(RobotoCondensed_Regular);
         makeCall.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 call();
@@ -51,6 +60,7 @@ public class Nav_Ayuda extends AppCompatActivity {
         });
 
         btn_faqs = (Button) findViewById(R.id.btn_faqs);
+        btn_faqs.setTypeface(RobotoCondensed_Regular);
         btn_faqs.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), Preguntas_Frecuentes.class);
@@ -59,6 +69,7 @@ public class Nav_Ayuda extends AppCompatActivity {
         });
 
         btnenviarmensaje = (Button) findViewById(R.id.btn_enviarmensaje);
+        btnenviarmensaje.setTypeface(RobotoCondensed_Regular);
         btnenviarmensaje.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v)
@@ -69,8 +80,10 @@ public class Nav_Ayuda extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     public void run() {
                         input_asunto = (EditText) findViewById(R.id.etxt_asunto);
+                        input_asunto.setTypeface(RobotoCondensed_Regular);
                         asunto = input_asunto.getText().toString();
                         input_mensaje = (EditText) findViewById(R.id.etxt_mensaje);
+                        input_mensaje.setTypeface(RobotoCondensed_Regular);
                         mensaje = input_mensaje.getText().toString();
 
                         if ((asunto.length() > 0) && (mensaje.length() > 0)) {
