@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/RivosTaxiPartner.iml" filepath="$PROJECT_DIR$/RivosTaxiPartner.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gcm/gcm.iml" filepath="$PROJECT_DIR$/gcm/gcm.iml" />
-      <module fileurl="file://$PROJECT_DIR$/generadordao/generadordao.iml" filepath="$PROJECT_DIR$/generadordao/generadordao.iml" />
-    </modules>
+    <modules />
   </component>
 </project>
