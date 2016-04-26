@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class Servicios {
 
-    private JSONParser jsonParser;
+  /*  private JSONParser jsonParser;
 
     private static String loginURL = "http://appm.rivosservices.com/index_c.php";
     private static String notfcURL = "http://appm.rivosservices.com/push.php";
@@ -478,20 +478,20 @@ public class Servicios {
 
     public boolean isUserLoggedIn(Context context)
     {
-        /*DatabaseHandler db = new DatabaseHandler(context);
+        *//*DatabaseHandler db = new DatabaseHandler(context);
         int count = db.getRowCount();
         if(count > 0)
         {
             return true;
-        }*/
+        }*//*
         return false;
     }
 
     public boolean logoutUser(Context context)
     {
-        /*DatabaseHandler db = new DatabaseHandler(context);
-        db.resetTables();*/
+        *//*DatabaseHandler db = new DatabaseHandler(context);
+        db.resetTables();*//*
         return true;
     }
-
+*/
 }

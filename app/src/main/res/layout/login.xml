@@ -17,47 +17,39 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginTop="40dp"
-            android:src="@drawable/logo"
+            android:src="@drawable/ic_launcher"
             android:id="@+id/ic_launcher"
             android:layout_gravity="center_horizontal" />
 
 
-        <com.rengwuxian.materialedittext.MaterialEditText
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:hint="Correo"
             android:textSize="16dp"
+            android:padding="10dp"
+            android:textColor="#535353"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="25dp"
-            android:background="#535353"
+            android:background="#e2e2e2"
             android:id="@+id/loginEmail"
-            android:inputType="textEmailAddress"
-            app:met_clearButton="true"
-            app:met_floatingLabel="highlight"
-            app:met_textColorHint="#c2898e"
-            app:met_baseColor="#535353"
-            app:met_primaryColor="#c2898e"
-            app:met_errorColor="#ffffff"/>
+            android:inputType="textEmailAddress" />
 
 
-        <com.rengwuxian.materialedittext.MaterialEditText
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Contraseña"
             android:textSize="16dp"
+            android:textColor="#535353"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:background="#ff983f46"
+            android:background="#e2e2e2"
+            android:padding="10dp"
             android:id="@+id/loginPassword"
-            android:inputType="textPassword"
-            app:met_clearButton="true"
-            app:met_floatingLabel="highlight"
-            app:met_textColorHint="#c2898e"
-            app:met_baseColor="#ff983f46"
-            app:met_primaryColor="#c2898e"
-            app:met_errorColor="#ffffff"/>
+            android:inputType="textPassword"/>
 
 
         <Button
@@ -65,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textColor="#ffff8d80"
+            android:textColor="#ababab"
             android:textSize="16dp"
             android:background="@android:color/transparent"
             android:clickable="true"
@@ -84,20 +76,10 @@
             android:text=""
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <com.balysv.materialripple.MaterialRippleLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="20dp"
-            app:mrl_rippleOverlay="true"
-            app:mrl_rippleColor="#9b9b9b"
-            app:mrl_rippleAlpha="0.2"
-            app:mrl_rippleDelayClick="false"
-            app:mrl_rippleHover="true">
+
             <Button
                 android:id="@+id/btnLogin"
+                android:layout_margin="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -106,7 +88,6 @@
                 android:textColor="#ffffff"
                 android:textAllCaps="false"
                 android:text="Iniciar" />
-        </com.balysv.materialripple.MaterialRippleLayout>
 
     </LinearLayout>
 </ScrollView>

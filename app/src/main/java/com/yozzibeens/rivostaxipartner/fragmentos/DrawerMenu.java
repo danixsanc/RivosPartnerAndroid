@@ -1,7 +1,9 @@
 package com.yozzibeens.rivostaxipartner.fragmentos;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -18,6 +20,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.yozzibeens.rivostaxipartner.Main;
 import com.yozzibeens.rivostaxipartner.R;
 import com.yozzibeens.rivostaxipartner.actividades.Nav_Ayuda;
 import com.yozzibeens.rivostaxipartner.actividades.Nav_Historial;
@@ -37,7 +40,7 @@ public class DrawerMenu extends Fragment {
 
     TextView txtCorreo;
     TextView txtNombre;
-    Button CerrarSesion;
+    LinearLayout CerrarSesion;
     View rootview;
     String correo;
     String nombre;
@@ -107,7 +110,6 @@ public class DrawerMenu extends Fragment {
         // Inflate the layout for this fragment
         View view  = inflater.inflate(R.layout.drawer_menu, container, false);
 
-        Typeface RobotoCondensed_Regular = Typeface.createFromAsset(getActivity().getAssets(), "RobotoCondensed-Regular.ttf");
 
 
         final Preferencias preferencias = new Preferencias(getActivity().getApplicationContext());
@@ -121,85 +123,88 @@ public class DrawerMenu extends Fragment {
             correo = cabbie.getEmail();
             nombre = cabbie.getName();
             txtCorreo = (TextView) view.findViewById(R.id.txtCorreo);
-            txtCorreo.setTypeface(RobotoCondensed_Regular);
+            //txtCorreo.setTypeface(RobotoCondensed_Regular);
             txtNombre = (TextView) view.findViewById(R.id.txtNombre);
-            txtNombre.setTypeface(RobotoCondensed_Regular);
+            //txtNombre.setTypeface(RobotoCondensed_Regular);
             txtCorreo.setText(correo);
             txtNombre.setText(nombre);
 
+
+            CerrarSesion = (LinearLayout) view.findViewById(R.id.CerrarSesion);
+            CerrarSesion.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    AlertDialog.Builder dialog1 = new AlertDialog.Builder(getActivity());
+                    dialog1.setMessage("¿Cerrar Sesion?");
+                    dialog1.setCancelable(false);
+                    dialog1.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            preferencias.setSesion(true);
+                            CabbieController cabbieController = new CabbieController(getActivity().getApplicationContext());
+                            cabbieController.eliminarTodo();
+                            Intent intent = new Intent(getActivity(), Main.class);
+                            startActivity(intent);
+                            getActivity().finish();
+                        }
+                    });
+                    dialog1.setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    dialog1.show();
+
+
+
+                }
+            });
+
+
+            LinearLayout solicitar;
+            solicitar = (LinearLayout) view.findViewById(R.id.nav_solicitar);
+            solicitar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mDrawerLayout.closeDrawers();
+                }
+            });
+
+            LinearLayout perfil;
+            perfil = (LinearLayout) view.findViewById(R.id.nav_perfil);
+            perfil.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(getActivity(), Nav_Perfil.class));
+                }
+            });
+
+            LinearLayout historial;
+            historial = (LinearLayout) view.findViewById(R.id.nav_historial);
+            historial.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(getActivity(), Nav_Historial.class));
+                }
+            });
+
+            LinearLayout ayuda;
+            ayuda = (LinearLayout) view.findViewById(R.id.nav_ayuda);
+            ayuda.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(getActivity(), Nav_Ayuda.class));
+                }
+            });
+
         }
 
-       /* final Preferencias preferencias = new Preferencias(getActivity().getApplicationContext());
-
-        boolean check = preferencias.getSesion();
-
-        if (!check)
-        {
-            String Client_Id = preferencias.getClient_Id();
-            ClientController clientController = new ClientController(getActivity().getApplicationContext());
-            Client client;
-            client = clientController.obtenerClientPorClientId(Client_Id);
-            correo = client.getEmail();
-            nombre = client.getName();
-            txtCorreo = (TextView) view.findViewById(R.id.txtCorreo);
-            txtNombre = (TextView) view.findViewById(R.id.txtNombre);
-
-            txtCorreo.setText(correo);
-            txtNombre.setText(nombre);
-
-        }
 
 
-        CerrarSesion = (Button) view.findViewById(R.id.CerrarSesion);
-        CerrarSesion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                preferencias.setSesion(true);
-                LoginManager.getInstance().logOut();
-                ClientController clientController = new ClientController(getActivity().getApplicationContext());
-                clientController.eliminarTodo();
-                Intent intent = new Intent(getActivity(), Main.class);
-                startActivity(intent);
-                getActivity().finish();
-            }
-        });
-*/
-
-        LinearLayout solicitar;
-        solicitar = (LinearLayout) view.findViewById(R.id.nav_solicitar);
-        solicitar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mDrawerLayout.closeDrawers();
-            }
-        });
-
-        LinearLayout perfil;
-        perfil = (LinearLayout) view.findViewById(R.id.nav_perfil);
-        perfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), Nav_Perfil.class));
-            }
-        });
-
-        LinearLayout historial;
-        historial = (LinearLayout) view.findViewById(R.id.nav_historial);
-        historial.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), Nav_Historial.class));
-            }
-        });
-
-        LinearLayout ayuda;
-        ayuda = (LinearLayout) view.findViewById(R.id.nav_ayuda);
-        ayuda.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), Nav_Ayuda.class));
-            }
-        });
 
 
 

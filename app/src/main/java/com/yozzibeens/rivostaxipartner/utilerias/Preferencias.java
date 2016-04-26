@@ -12,6 +12,8 @@ public class Preferencias {
     private final String TUTORIAL = "tutorial";
     private final String SESION = "sesion";
     private final String CABBIEID = "cabbieid";
+    private final String CLIENTID = "clientid";
+    private final String GCMID = "gcmid";
 
     public int s;
     private Context mContext;
@@ -54,6 +56,27 @@ public class Preferencias {
     public void setCabbie_Id(String prSave){
         SharedPreferences.Editor editor = getSettings().edit();
         editor.putString(CABBIEID, prSave);
+        editor.commit();
+    }
+
+
+    public String getGcm_Id(){
+        return getSettings().getString(GCMID, GCMID);
+    }
+
+    public void setGcm_Id(String prSave){
+        SharedPreferences.Editor editor = getSettings().edit();
+        editor.putString(GCMID, prSave);
+        editor.commit();
+    }
+
+    public String getClient_Id(){
+        return getSettings().getString(CLIENTID, CLIENTID);
+    }
+
+    public void setClientId(String prSave){
+        SharedPreferences.Editor editor = getSettings().edit();
+        editor.putString(CLIENTID, prSave);
         editor.commit();
     }
 

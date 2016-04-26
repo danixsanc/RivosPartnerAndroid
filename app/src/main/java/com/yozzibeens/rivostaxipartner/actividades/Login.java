@@ -1,35 +1,40 @@
 package com.yozzibeens.rivostaxipartner.actividades;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.StrictMode;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.yozzibeens.rivostaxipartner.Main;
 import com.yozzibeens.rivostaxipartner.R;
 import com.yozzibeens.rivostaxipartner.controlador.CabbieController;
-import com.yozzibeens.rivostaxipartner.modelo.Cabbie;
+import com.yozzibeens.rivostaxipartner.listener.AsyncTaskListener;
+import com.yozzibeens.rivostaxipartner.listener.ServicioAsyncService;
+import com.yozzibeens.rivostaxipartner.respuesta.ResultadoLogin;
+import com.yozzibeens.rivostaxipartner.servicios.WebService;
+import com.yozzibeens.rivostaxipartner.solicitud.SolicitudLogin;
+import com.yozzibeens.rivostaxipartner.solicitud.SolicitudLogin2;
 import com.yozzibeens.rivostaxipartner.utilerias.Preferencias;
-import com.yozzibeens.rivostaxipartner.utilerias.Servicios;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 
 public class Login extends Activity {
@@ -49,14 +54,10 @@ public class Login extends Activity {
     CheckBox check_terminos;
     ProgressDialog dialog;
 
-    private static String KEY_SUCCESS = "Success";
-    private static String KEY_ERROR = "Error";
-    private static String KEY_ERROR_MSG = "Error_msg";
-    private static String KEY_CABBIE_ID = "Cabbie_Id";
-    private static String KEY_NAME = "Name";
-    private static String KEY_PHONE = "Phone";
-    private static String KEY_EMAIL = "Email";
-    private static String KEY_CREATED_AT = "Created_At";
+    private ProgressDialog progressdialog;
+    private Gson gson;
+    private ResultadoLogin resultadoLogin;
+    private CabbieController cabbieController;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,15 +66,11 @@ public class Login extends Activity {
 
         Typeface RobotoCondensed_Regular = Typeface.createFromAsset(getAssets(), "RobotoCondensed-Regular.ttf");
 
-        if (android.os.Build.VERSION.SDK_INT > 9) {
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-        }
+
+        this.gson = new Gson();
+        cabbieController = new CabbieController(this);
 
 
-        //btn_faqs_login = (Button) findViewById(R.id.btn_faqs_login);
-        //mButtonLogout = (Button) findViewById(R.id.salir);
-        //mTextStatus = (TextView) findViewById(R.id.mostrar);
 
         inputEmail = (EditText) findViewById(R.id.loginEmail);
         inputEmail.setTypeface(RobotoCondensed_Regular);
@@ -85,84 +82,99 @@ public class Login extends Activity {
         btnOlvidePass.setTypeface(RobotoCondensed_Regular);
         loginErrorMsg = (TextView) findViewById(R.id.login_error);
         loginErrorMsg.setTypeface(RobotoCondensed_Regular);
-        //check_terminos = (CheckBox) findViewById(R.id.check_terminos);
 
-        /*btn_faqs_login.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View view)
-            {
-                Intent i = new Intent(getApplicationContext(),faqs_login.class);
-                startActivity(i);
-            }
-        });*/
 
         btnLogin.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View view)
             {
-                if (exiteConexionInternet()){
-                    dialog = ProgressDialog.show(Login.this, "","Loading..Wait.." , true);
-                    dialog.show();
-
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        public void run() {
-                            String email = inputEmail.getText().toString();
-                            String password = inputPassword.getText().toString();
-
-                            Servicios servicios = new Servicios();
-                            Log.d("Button", "Login");
-                            try {
-                                JSONObject json = servicios.loginUser(email, password);
-                                if (json.getString(KEY_SUCCESS) != null) {
-                                    loginErrorMsg.setText("");
-                                    String res = json.getString(KEY_SUCCESS);
-                                    if (Integer.parseInt(res) == 1) {
-                                       // DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-                                        JSONObject json_user = json.getJSONObject("User");
-
-                                        servicios.logoutUser(getApplicationContext());
-
-                                        Cabbie cabbie = new Cabbie(null, json_user.getString(KEY_CABBIE_ID),
-                                                json_user.getString(KEY_NAME), json_user.getString(KEY_EMAIL),
-                                                json_user.getString(KEY_PHONE));
-
-                                        CabbieController cabbieController = new CabbieController(getApplicationContext());
-                                        cabbieController.guardarCabbie(cabbie);
-
-                                        Preferencias preferencias = new Preferencias(getApplicationContext());
-                                        preferencias.setCabbie_Id(cabbie.getCabbie_Id());
-                                        preferencias.setSesion(false);
-
-                                        Intent main = new Intent(getApplicationContext(), Main.class);
-                                        main.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        startActivity(main);
-                                        finish();
-                                        dialog.dismiss();
-                                    } else {
-                                        loginErrorMsg.setText("Usuario/Contraseña Incorrecto(a)");
-                                    }
-                                }else {
-                                    loginErrorMsg.setText("Error...");
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-                    }, 3000);  // 3000 milliseconds
-                }else{
-                    Toast.makeText(Login.this, "Verifica Tu Conexion a Internet", Toast.LENGTH_LONG).show();
-                }
+                String email = inputEmail.getText().toString();
+                String password = inputPassword.getText().toString();
+                SolicitudLogin2 oUsuario = new SolicitudLogin2();
+                oUsuario.setEmail(email);
+                oUsuario.setPassword(password);
+                LoginWebService(gson.toJson(oUsuario));
             }
 
 
         });
+    }
 
+    private void LoginWebService(String rawJson) {
+        ServicioAsyncService servicioAsyncService = new ServicioAsyncService(this, WebService.LoginWebService, rawJson);
+        servicioAsyncService.setOnCompleteListener(new AsyncTaskListener() {
+            @Override
+            public void onTaskStart() {
+                progressdialog = new ProgressDialog(Login.this);
+                progressdialog.setMessage("Iniciando, espere");
+                progressdialog.setCancelable(true);
+                progressdialog.setCanceledOnTouchOutside(false);
+                progressdialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        progressdialog.dismiss();
+                    }
+                });
+                progressdialog.show();
+            }
 
+            @Override
+            public void onTaskDownloadedFinished(HashMap<String, Object> result) {
+                try {
+                    int statusCode = Integer.parseInt(result.get("StatusCode").toString());
+                    if (statusCode == 0) {
+                        resultadoLogin = gson.fromJson(result.get("Resultado").toString(), ResultadoLogin.class);
+                        if ((!resultadoLogin.isError()) && resultadoLogin.getData() != null) {
+                            cabbieController.eliminarTodo();
+                            cabbieController.guardarOActualizarCabbie(resultadoLogin.getData());
 
+                            Preferencias preferencias = new Preferencias(getApplicationContext());
+                            String clientId = resultadoLogin.getData().get(0).getCabbie_Id();
+                            preferencias.setCabbie_Id(clientId);
+                            preferencias.setSesion(false);
+
+                            Intent main = new Intent(getApplicationContext(), Main.class);
+                            startActivity(main);
+                            finish();
+                        }
+                    }
+                }
+                catch (Exception error) {
+
+                }
+            }
+
+            @Override
+            public void onTaskUpdate(String result) {
+
+            }
+
+            @Override
+            public void onTaskComplete(HashMap<String, Object> result) {
+                progressdialog.dismiss();
+                if (resultadoLogin.isError())
+                {
+                    String messageError = resultadoLogin.getMessage();
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(Login.this);
+                    dialog.setMessage(messageError);
+                    dialog.setCancelable(true);
+                    dialog.setNegativeButton("OK", new DialogInterface.OnClickListener()
+                    {
+                        public void onClick(DialogInterface dialog, int which)
+                        {
+                            dialog.cancel();
+                        }
+                    });
+                    dialog.show();
+                }
+            }
+
+            @Override
+            public void onTaskCancelled(HashMap<String, Object> result) {
+                progressdialog.dismiss();
+            }
+        });
+        servicioAsyncService.execute();
     }
 
     public boolean exiteConexionInternet() {
@@ -174,9 +186,8 @@ public class Login extends Activity {
         return false;
     }
 
-
-
     public void resetpass (View view) {goToUrl ("http://appm.rivosservices.com/reset_pass.php");}
+
     public void faqs (View view) { goToUrl("http://appm.rivosservices.com/faqs.html");}
 
     public void goToUrl (String url) {

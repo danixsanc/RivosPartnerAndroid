@@ -29,15 +29,6 @@ import java.util.List;
  */
 public class Nav_Historial extends AppCompatActivity {
 
-    /*private static String KEY_SUCCESS = "Success";
-
-    TextView txt_no_data_detected;
-
-    ListView historyList;
-    HistoryCustomAdapter historyAdapter;
-    ArrayList<AdaptadorHistorial> historyArray = new ArrayList<AdaptadorHistorial>();
-
-    int request_id[] = new int[0];*/
 
     TextView txt_no_data_detected2;
 

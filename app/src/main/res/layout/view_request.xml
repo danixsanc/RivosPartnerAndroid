@@ -7,42 +7,238 @@
 
     <include layout="@layout/toolbar" />
 
-    <TextView
-        android:id="@+id/txt_id"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ID"
-        android:layout_gravity="center"
-        android:textColor="#000"
-        android:textSize="30dp"
-        android:gravity="center"/>
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txt_nombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nombre"
-        android:layout_gravity="center"
-        android:textColor="#000"
-        android:textSize="30dp"
-        android:gravity="center"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Nombre: "
+                android:textColor="#000"
+                android:textSize="16dp"/>
 
-    <TextView
-        android:id="@+id/txt_telefono"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Telefono"
-        android:layout_gravity="center"
-        android:textColor="#000"
-        android:textSize="30dp"
-        android:gravity="center"/>
+            <TextView
+                android:id="@+id/txt_Nombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID"
+                android:textColor="#000"
+                android:textSize="16dp"/>
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_aceptar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Acpetar"
-        android:layout_gravity="center"
-        android:textColor="#fff"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_linea"
+            android:tint="#000"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Solcitud: "
+                android:textColor="#000"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/txt_Request_Id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre"
+                android:textColor="#000"
+                android:textSize="16dp"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_linea"
+            android:tint="#000"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Fecha: "
+                android:textColor="#000"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/txt_Fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telefono"
+                android:textColor="#000"
+                android:textSize="16dp"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_linea"
+            android:tint="#000"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Hora: "
+                android:textColor="#000"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/txt_Hora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre"
+                android:textColor="#000"
+                android:textSize="16dp"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_linea"
+            android:tint="#000"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Inicio: "
+                android:textColor="#000"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/txt_Inicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre"
+                android:textColor="#000"
+                android:textSize="16dp"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_linea"
+            android:tint="#000"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Destino: "
+                android:textColor="#000"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/txt_Destino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre"
+                android:textColor="#000"
+                android:textSize="16dp"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_linea"
+            android:tint="#000"/>
+
+
+
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|bottom"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_rechazar"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#000"
+                android:text="Rechazar" />
+
+            <Button
+                android:id="@+id/btn_aceptar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#000"
+                android:text="Aceptar" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
 
 </LinearLayout>
+
+
+
+
+
+
+

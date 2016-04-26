@@ -33,19 +33,6 @@
                 android:layout_height="60dp"
                 android:src="@drawable/logo"/>
 
-            <Button
-                android:id="@+id/CerrarSesion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:background="@color/transparent"
-                android:layout_marginLeft="20dp"
-                android:textColor="#ffffff"
-                android:drawableLeft="@drawable/ic_logout_white_24dp"
-                android:textSize="14sp"
-                android:drawablePadding="3dp"
-                android:text="Cerrar Sesión"/>
-
         </LinearLayout>
 
         <LinearLayout
@@ -101,16 +88,16 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_local_taxi_black_24dp"
-                android:tint="#565656"
+                android:tint="#818181"
                 android:layout_marginLeft="16dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Solicitar"
-                android:textColor="#565656"
-                android:textSize="18sp"/>
+                android:text="Solicitudes"
+                android:textColor="#818181"
+                android:textSize="16dp"/>
 
         </LinearLayout>
 
@@ -135,7 +122,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_history_black_24dp"
-                android:tint="#565656"
+                android:tint="#818181"
                 android:layout_marginLeft="16dp"/>
 
             <TextView
@@ -143,8 +130,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Historial"
-                android:textColor="#565656"
-                android:textSize="18sp"/>
+                android:textColor="#818181"
+                android:textSize="16dp"/>
 
         </LinearLayout>
 
@@ -169,7 +156,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_person_black_24dp"
-                android:tint="#565656"
+                android:tint="#818181"
                 android:layout_marginLeft="16dp"/>
 
             <TextView
@@ -177,8 +164,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Perfil"
-                android:textColor="#565656"
-                android:textSize="18sp"/>
+                android:textColor="#818181"
+                android:textSize="16dp"/>
 
         </LinearLayout>
 
@@ -203,7 +190,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_live_help_black_24dp"
-                android:tint="#565656"
+                android:tint="#818181"
                 android:layout_marginLeft="16dp"/>
 
             <TextView
@@ -211,8 +198,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Ayuda"
-                android:textColor="#565656"
-                android:textSize="18sp"/>
+                android:textColor="#818181"
+                android:textSize="16dp"/>
 
         </LinearLayout>
 
@@ -224,6 +211,39 @@
             android:layout_marginLeft="10dp"
             android:tint="#c1c1c1"/>
 
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/CerrarSesion"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center|left"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_power_settings_new_black_24dp"
+                android:tint="#818181"
+                android:layout_marginLeft="16dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Cerrar Sesion"
+                android:textColor="#818181"
+                android:textSize="16dp"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_linea"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:tint="#c1c1c1"/>
 
 
     </LinearLayout>
