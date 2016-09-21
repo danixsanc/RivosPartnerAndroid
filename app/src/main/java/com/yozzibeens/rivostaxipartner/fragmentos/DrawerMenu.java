@@ -116,6 +116,7 @@ public class DrawerMenu extends Fragment {
         boolean check = preferencias.getSesion();
         if (!check)
         {
+            Typeface FontRoboto = Typeface.createFromAsset(getActivity().getAssets(), "Roboto-Light.ttf");
             String Cabbie_Id = preferencias.getCabbie_Id();
             CabbieController cabbieController = new CabbieController(getActivity().getApplicationContext());
             Cabbie cabbie;
@@ -123,9 +124,9 @@ public class DrawerMenu extends Fragment {
             correo = cabbie.getEmail();
             nombre = cabbie.getName();
             txtCorreo = (TextView) view.findViewById(R.id.txtCorreo);
-            //txtCorreo.setTypeface(RobotoCondensed_Regular);
+            txtCorreo.setTypeface(FontRoboto);
             txtNombre = (TextView) view.findViewById(R.id.txtNombre);
-            //txtNombre.setTypeface(RobotoCondensed_Regular);
+            txtNombre.setTypeface(FontRoboto);
             txtCorreo.setText(correo);
             txtNombre.setText(nombre);
 
@@ -135,7 +136,7 @@ public class DrawerMenu extends Fragment {
                 @Override
                 public void onClick(View view) {
 
-                    AlertDialog.Builder dialog1 = new AlertDialog.Builder(getActivity());
+                    AlertDialog.Builder dialog1 = new AlertDialog.Builder(getActivity(), R.style.AlertDialogStyle);
                     dialog1.setMessage("¿Cerrar Sesion?");
                     dialog1.setCancelable(false);
                     dialog1.setPositiveButton("Si", new DialogInterface.OnClickListener() {

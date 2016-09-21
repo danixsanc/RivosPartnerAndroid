@@ -99,7 +99,7 @@ public class Nav_Perfil extends AppCompatActivity {
                             String cabbieId = preferencias.getCabbie_Id();
                             SolicitudCambiarEstatus oData = new SolicitudCambiarEstatus();
                             oData.setCabbie_Id(cabbieId);
-                            oData.setStatus("300");
+                            oData.setStatus("2");//Ocupado
                             ChangeStatusWebService(gson.toJson(oData));
                         }
                     });
@@ -121,7 +121,7 @@ public class Nav_Perfil extends AppCompatActivity {
                     String cabbieId = preferencias.getCabbie_Id();
                     SolicitudCambiarEstatus oData = new SolicitudCambiarEstatus();
                     oData.setCabbie_Id(cabbieId);
-                    oData.setStatus("0");
+                    oData.setStatus("1");//Desocupado
                     ChangeStatusWebService(gson.toJson(oData));
                 }
             }

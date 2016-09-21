@@ -33,7 +33,7 @@
                     android:paddingRight="30dp"
                     android:textSize="16dp"
                     android:drawableLeft="@drawable/ic_phone_white_24dp"
-                    android:background="@drawable/rb_iniciar_sesion"
+                    android:background="@color/colorPrimary"
                     android:textColor="#ffffff"
                     android:text="Asistencia telefonica" />
 
@@ -66,7 +66,7 @@
                     android:textColor="#ffffff"
                     android:onClick="goTopage"
                     android:drawableLeft="@drawable/ic_question_answer_white_24dp"
-                    android:background="@drawable/rb_iniciar_sesion"
+                    android:background="@color/colorPrimary"
                     android:text="Preguntas frecuentes" />
 
             </com.balysv.materialripple.MaterialRippleLayout>
@@ -81,32 +81,43 @@
                 android:textColor="#535353"
                 android:textStyle="bold"
                 android:layout_marginLeft="20dp"
-                android:text="Contactanos"
+                android:text="Enviar mensaje a la base:"
                 android:id="@+id/Txt_Contact_Us" />
 
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="48dp"
+                android:layout_marginLeft="48dp"
                 android:hint="Asunto"
                 android:textSize="16dp"
-                android:textColor="#535353"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:background="#00ffffff"
                 android:id="@+id/etxt_asunto"
-                android:inputType="textMultiLine"/>
+                android:inputType="textEmailAddress"
+                app:met_clearButton="true"
+                app:met_floatingLabel="highlight"
+                app:met_textColorHint="@color/colorPrimary"
+                app:met_baseColor="@color/colorPrimary"
+                app:met_primaryColor="@color/colorPrimary"
+                app:met_errorColor="@color/colorPrimary"/>
 
-
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="48dp"
+                android:layout_marginLeft="48dp"
                 android:hint="Mensaje"
                 android:textSize="16dp"
-                android:textColor="#535353"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:background="#00ffffff"
                 android:id="@+id/etxt_mensaje"
-                android:inputType="textMultiLine"/>
+                android:inputType="textImeMultiLine"
+                app:met_clearButton="true"
+                app:met_floatingLabel="highlight"
+                app:met_textColorHint="@color/colorPrimary"
+                app:met_baseColor="@color/colorPrimary"
+                app:met_primaryColor="@color/colorPrimary"
+                app:met_errorColor="@color/colorPrimary"/>
 
 
             <com.balysv.materialripple.MaterialRippleLayout
@@ -137,7 +148,7 @@
                     android:textColor="#ffffff"
                     android:onClick="goTopage"
                     android:drawableLeft="@drawable/ic_speaker_notes_white_24dp"
-                    android:background="@drawable/rb_iniciar_sesion"
+                    android:background="@color/colorPrimary"
                     android:text="Enviar" />
 
             </com.balysv.materialripple.MaterialRippleLayout>

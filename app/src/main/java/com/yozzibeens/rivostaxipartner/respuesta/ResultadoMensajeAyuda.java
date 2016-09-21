@@ -6,9 +6,8 @@ public class ResultadoMensajeAyuda {
 
 
     private boolean Data;
-    private boolean Error;
+    private boolean IsError;
     private String Message;
-    private String Success;
 
     public boolean isData() {
         return Data;
@@ -19,11 +18,11 @@ public class ResultadoMensajeAyuda {
     }
 
     public boolean isError() {
-        return Error;
+        return IsError;
     }
 
     public void setError(boolean error) {
-        Error = error;
+        IsError = error;
     }
 
     public String getMessage() {
@@ -33,18 +32,6 @@ public class ResultadoMensajeAyuda {
     public void setMessage(String message) {
         Message = message;
     }
-
-    public String getSuccess() {
-        return Success;
-    }
-
-    public void setSuccess(String success) {
-        Success = success;
-    }
-
-
-
-
 
 
 }

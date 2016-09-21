@@ -7,26 +7,26 @@ import java.util.ArrayList;
 
 public class ResultadoLogin {
 
-    private ArrayList<Cabbie> Data;
-    private boolean Error;
+    private Cabbie Data;
+    private boolean IsError;
     private String Message;
 
 
 
-    public ArrayList<Cabbie> getData() {
+    public Cabbie getData() {
         return Data;
     }
 
-    public void setData(ArrayList<Cabbie> data) {
+    public void setData(Cabbie data) {
         Data = data;
     }
 
     public boolean isError() {
-        return Error;
+        return IsError;
     }
 
     public void setError(boolean error) {
-        Error = error;
+        IsError = error;
     }
 
     public String getMessage() {

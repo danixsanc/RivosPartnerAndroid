@@ -38,18 +38,13 @@ import java.util.HashMap;
  */
 public class Nav_Ayuda extends AppCompatActivity {
 
-
-    Button btnenviarmensaje;
-    Button btn_faqs;
-    Button makeCall;
-    EditText input_asunto;
-    EditText input_mensaje;
-    TextView Txt_Contact_Us;
-    String asunto;
-    String mensaje;
-
+    private Button btnenviarmensaje;
+    private Button btn_faqs;
+    private Button makeCall;
+    private EditText input_asunto;
+    private EditText input_mensaje;
+    private TextView Txt_Contact_Us;
     private Gson gson;
-
     private ProgressDialog progressdialog;
     private ResultadoMensajeAyuda resultadoMensajeAyuda;
 
@@ -64,23 +59,23 @@ public class Nav_Ayuda extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        input_asunto = (EditText) findViewById(R.id.etxt_asunto);
-        input_mensaje  = (EditText) findViewById(R.id.etxt_mensaje);
+        this.input_asunto = (EditText) findViewById(R.id.etxt_asunto);
+        this.input_mensaje  = (EditText) findViewById(R.id.etxt_mensaje);
 
-        Txt_Contact_Us = (TextView) findViewById(R.id.Txt_Contact_Us);
-        Txt_Contact_Us.setTypeface(RobotoCondensed_Regular);
+        this.Txt_Contact_Us = (TextView) findViewById(R.id.Txt_Contact_Us);
+        this.Txt_Contact_Us.setTypeface(RobotoCondensed_Regular);
 
-        makeCall = (Button) findViewById(R.id.btn_makecall);
-        makeCall.setTypeface(RobotoCondensed_Regular);
-        makeCall.setOnClickListener(new View.OnClickListener() {
+        this.makeCall = (Button) findViewById(R.id.btn_makecall);
+        this.makeCall.setTypeface(RobotoCondensed_Regular);
+        this.makeCall.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 call();
             }
         });
 
-        btn_faqs = (Button) findViewById(R.id.btn_faqs);
-        btn_faqs.setTypeface(RobotoCondensed_Regular);
-        btn_faqs.setOnClickListener(new View.OnClickListener() {
+        this.btn_faqs = (Button) findViewById(R.id.btn_faqs);
+        this.btn_faqs.setTypeface(RobotoCondensed_Regular);
+        this.btn_faqs.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), Preguntas_Frecuentes.class);
                 startActivity(i);
@@ -118,7 +113,7 @@ public class Nav_Ayuda extends AppCompatActivity {
         servicioAsyncService.setOnCompleteListener(new AsyncTaskListener() {
             @Override
             public void onTaskStart() {
-                progressdialog = new ProgressDialog(Nav_Ayuda.this);
+                progressdialog = new ProgressDialog(Nav_Ayuda.this, R.style.AlertDialogStyle);
                 progressdialog.setMessage("Enviando mensaje, espere");
                 progressdialog.setCancelable(true);
                 progressdialog.setCanceledOnTouchOutside(false);
@@ -152,7 +147,7 @@ public class Nav_Ayuda extends AppCompatActivity {
             public void onTaskComplete(HashMap<String, Object> result) {
                 progressdialog.dismiss();
                 String messageError = resultadoMensajeAyuda.getMessage();
-                AlertDialog.Builder dialog = new AlertDialog.Builder(Nav_Ayuda.this);
+                AlertDialog.Builder dialog = new AlertDialog.Builder(Nav_Ayuda.this, R.style.AlertDialogStyle);
                 dialog.setMessage(messageError);
                 dialog.setCancelable(true);
                 dialog.setNegativeButton("OK", new DialogInterface.OnClickListener()

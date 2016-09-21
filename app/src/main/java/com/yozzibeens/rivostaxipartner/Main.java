@@ -49,6 +49,7 @@ import com.yozzibeens.rivostaxipartner.solicitud.SolicitudConsultarReferencia;
 import com.yozzibeens.rivostaxipartner.solicitud.SolicitudNotificacion;
 import com.yozzibeens.rivostaxipartner.solicitud.SolicitudObtenerSolicitudes;
 import com.yozzibeens.rivostaxipartner.solicitud.SolicitudVerificarTodo;
+import com.yozzibeens.rivostaxipartner.utilerias.FechasBD;
 import com.yozzibeens.rivostaxipartner.utilerias.ListRequest;
 import com.yozzibeens.rivostaxipartner.utilerias.Preferencias;
 import com.yozzibeens.rivostaxipartner.utilerias.Servicios;
@@ -317,7 +318,10 @@ public class Main extends AppCompatActivity implements LocationListener {
                             gcm_id = new String[solicitudes.size()];
 
                             for (int i=0; i < solicitudes.size(); i++){
-                                listrequestArray.add(new ListRequest(solicitudes.get(i).getDate()));
+                                FechasBD fb = new FechasBD();
+                                String fecha = fb.ObtenerFecha(solicitudes.get(i).getDate());
+                                String hora = fb.ObtenerHora(solicitudes.get(i).getDate());
+                                listrequestArray.add(new ListRequest(fecha + " a las " + hora));
                                 client_id[i] = Integer.parseInt(solicitudes.get(i).getClient_Id());
                                 request_id[i] = Integer.parseInt(solicitudes.get(i).getRequest_Id());
                                 gcm_id[i] = solicitudes.get(i).getGcm_id();

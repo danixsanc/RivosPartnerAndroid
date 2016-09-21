@@ -6,19 +6,25 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.gson.Gson;
+import com.rengwuxian.materialedittext.MaterialEditText;
 import com.yozzibeens.rivostaxipartner.Main;
 import com.yozzibeens.rivostaxipartner.R;
 import com.yozzibeens.rivostaxipartner.controlador.CabbieController;
@@ -27,11 +33,7 @@ import com.yozzibeens.rivostaxipartner.listener.ServicioAsyncService;
 import com.yozzibeens.rivostaxipartner.respuesta.ResultadoLogin;
 import com.yozzibeens.rivostaxipartner.servicios.WebService;
 import com.yozzibeens.rivostaxipartner.solicitud.SolicitudLogin;
-import com.yozzibeens.rivostaxipartner.solicitud.SolicitudLogin2;
 import com.yozzibeens.rivostaxipartner.utilerias.Preferencias;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -39,50 +41,44 @@ import java.util.HashMap;
 
 public class Login extends Activity {
 
-    protected static final String TAG ="";
-    private Button mButtonLogin;
-    private Button mButtonLogout;
-    private TextView mTextStatus;
-    private int NOTIF_ALERTA_ID = 0;
-
-
-    Button btnLogin;
-    Button btnOlvidePass;
-    EditText inputEmail;
-    EditText inputPassword;
-    TextView loginErrorMsg;
-    CheckBox check_terminos;
-    ProgressDialog dialog;
-
+    private Button btnLogin;
+    private Button btnOlvidePass;
+    private MaterialEditText inputEmail;
+    private MaterialEditText inputPassword;
+    private TextView loginErrorMsg;
     private ProgressDialog progressdialog;
     private Gson gson;
     private ResultadoLogin resultadoLogin;
     private CabbieController cabbieController;
+    private Typeface RobotoCondensed_Regular;
+    private String regId;
+    private Context context;
+    private GoogleCloudMessaging gcm;
+    private static final String REG_ID = "regId";
+    private static final String TAG = "Register Activity";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        Typeface RobotoCondensed_Regular = Typeface.createFromAsset(getAssets(), "RobotoCondensed-Regular.ttf");
-
-
+        this.RobotoCondensed_Regular = Typeface.createFromAsset(getAssets(), "RobotoCondensed-Regular.ttf");
         this.gson = new Gson();
-        cabbieController = new CabbieController(this);
+        this.cabbieController = new CabbieController(this);
+        this.inputEmail = (MaterialEditText) findViewById(R.id.loginEmail);
+        this.inputEmail.setTypeface(RobotoCondensed_Regular);
+        this.inputPassword = (MaterialEditText) findViewById(R.id.loginPassword);
+        this.inputPassword.setTypeface(RobotoCondensed_Regular);
+        this.btnLogin = (Button) findViewById(R.id.btnLogin);
+        this.btnLogin.setTypeface(RobotoCondensed_Regular);
+        this.btnOlvidePass = (Button) findViewById(R.id.btnOlvidePass);
+        this.btnOlvidePass.setTypeface(RobotoCondensed_Regular);
+        this.loginErrorMsg = (TextView) findViewById(R.id.login_error);
+        this.loginErrorMsg.setTypeface(RobotoCondensed_Regular);
 
-
-
-        inputEmail = (EditText) findViewById(R.id.loginEmail);
-        inputEmail.setTypeface(RobotoCondensed_Regular);
-        inputPassword = (EditText) findViewById(R.id.loginPassword);
-        inputPassword.setTypeface(RobotoCondensed_Regular);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
-        btnLogin.setTypeface(RobotoCondensed_Regular);
-        btnOlvidePass = (Button) findViewById(R.id.btnOlvidePass);
-        btnOlvidePass.setTypeface(RobotoCondensed_Regular);
-        loginErrorMsg = (TextView) findViewById(R.id.login_error);
-        loginErrorMsg.setTypeface(RobotoCondensed_Regular);
-
+        this.context = getApplicationContext();
+        this.regId = registerGCM();
 
         btnLogin.setOnClickListener(new View.OnClickListener()
         {
@@ -90,10 +86,12 @@ public class Login extends Activity {
             {
                 String email = inputEmail.getText().toString();
                 String password = inputPassword.getText().toString();
-                SolicitudLogin2 oUsuario = new SolicitudLogin2();
-                oUsuario.setEmail(email);
-                oUsuario.setPassword(password);
-                LoginWebService(gson.toJson(oUsuario));
+                SolicitudLogin oData = new SolicitudLogin();
+                oData.setEmail(email);
+                oData.setPassword(password);
+                oData.setGcm_Id(regId);
+                oData.setUser_Type("1");
+                LoginWebService(gson.toJson(oData));
             }
 
 
@@ -124,23 +122,21 @@ public class Login extends Activity {
                     int statusCode = Integer.parseInt(result.get("StatusCode").toString());
                     if (statusCode == 0) {
                         resultadoLogin = gson.fromJson(result.get("Resultado").toString(), ResultadoLogin.class);
-                        if ((!resultadoLogin.isError()) && resultadoLogin.getData() != null) {
-                            cabbieController.eliminarTodo();
-                            cabbieController.guardarOActualizarCabbie(resultadoLogin.getData());
-
-                            Preferencias preferencias = new Preferencias(getApplicationContext());
-                            String clientId = resultadoLogin.getData().get(0).getCabbie_Id();
-                            preferencias.setCabbie_Id(clientId);
-                            preferencias.setSesion(false);
-
-                            Intent main = new Intent(getApplicationContext(), Main.class);
-                            startActivity(main);
-                            finish();
-                        }
                     }
                 }
                 catch (Exception error) {
-
+                    String messageError = "Ocurrio un error inesperado";
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(Login.this, R.style.AlertDialogStyle);
+                    dialog.setMessage(messageError);
+                    dialog.setCancelable(true);
+                    dialog.setNegativeButton("OK", new DialogInterface.OnClickListener()
+                    {
+                        public void onClick(DialogInterface dialog, int which)
+                        {
+                            dialog.cancel();
+                        }
+                    });
+                    dialog.show();
                 }
             }
 
@@ -152,10 +148,23 @@ public class Login extends Activity {
             @Override
             public void onTaskComplete(HashMap<String, Object> result) {
                 progressdialog.dismiss();
-                if (resultadoLogin.isError())
+                if ((!resultadoLogin.isError()) && resultadoLogin.getData() != null) {
+                    cabbieController.eliminarTodo();
+                    cabbieController.guardarOActualizarCabbie(resultadoLogin.getData());
+
+                    Preferencias preferencias = new Preferencias(getApplicationContext());
+                    String clientId = resultadoLogin.getData().getCabbie_Id();
+                    preferencias.setCabbie_Id(clientId);
+                    preferencias.setSesion(false);
+
+                    Intent main = new Intent(getApplicationContext(), Main.class);
+                    startActivity(main);
+                    finish();
+                }
+                else if (resultadoLogin.isError())
                 {
                     String messageError = resultadoLogin.getMessage();
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(Login.this);
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(Login.this, R.style.AlertDialogStyle);
                     dialog.setMessage(messageError);
                     dialog.setCancelable(true);
                     dialog.setNegativeButton("OK", new DialogInterface.OnClickListener()
@@ -177,23 +186,77 @@ public class Login extends Activity {
         servicioAsyncService.execute();
     }
 
-    public boolean exiteConexionInternet() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-            return true;
+    public String registerGCM() {
+
+        gcm = GoogleCloudMessaging.getInstance(this);
+        regId = getRegistrationId(context);
+
+        if (TextUtils.isEmpty(regId)) {
+
+            registerInBackground();
+
+            Log.d("Registro",
+                    "registerGCM - successfully registered with GCM server - regId: "
+                            + regId);
+        } else {
+            //Toast.makeText(getApplicationContext(), "RegId already available. RegId: " + regId, Toast.LENGTH_LONG).show();
+            System.out.print("RegId already available. RegId: " + regId);
         }
-        return false;
+        return regId;
     }
 
-    public void resetpass (View view) {goToUrl ("http://appm.rivosservices.com/reset_pass.php");}
+    private String getRegistrationId(Context context) {
+        final SharedPreferences prefs = getSharedPreferences(
+                Splash.class.getSimpleName(), Context.MODE_PRIVATE);
+        String registrationId = prefs.getString(REG_ID, "");
+        if (registrationId.isEmpty()) {
+            Log.i(TAG, "Registration not found.");
+            return "";
+        }
+        return registrationId;
+    }
 
-    public void faqs (View view) { goToUrl("http://appm.rivosservices.com/faqs.html");}
+    private void registerInBackground() {
+        final Handler handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                switch (msg.what) {
+                    case 0:
+                        Toast.makeText(context, "Listo", Toast.LENGTH_LONG).show();
+                        break;
+                    case 1:
+                        Toast.makeText(context, "!!!!!", Toast.LENGTH_LONG).show();
+                        break;
+                }
+                super.handleMessage(msg);
+            }
 
-    public void goToUrl (String url) {
-        Uri uriUrl = Uri.parse(url);
-        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
-        startActivity(launchBrowser);
+        };
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if (gcm == null) {
+                        gcm = GoogleCloudMessaging.getInstance(context);
+                    }
+                    regId = gcm.register("1001209534751");
+
+                    saveRegisterId(context, regId);
+                } catch (IOException ex) {
+                    handler.sendEmptyMessage(1);
+                    Log.e(TAG, ex.getMessage(), ex);
+                }
+            }
+        };
+        new Thread(runnable).start();
+    }
+
+    private void saveRegisterId(Context context, String regId) {
+        final SharedPreferences prefs = getSharedPreferences(
+                Splash.class.getSimpleName(), Context.MODE_PRIVATE);
+        Log.i(TAG, "Saving regId on app version ");
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(REG_ID, regId);
+        editor.commit();
     }
 }
-//Gibran123

@@ -11,45 +11,50 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         tools:context=".MainActivity"
+        android:layout_margin="48dp"
         android:weightSum="1">
 
         <ImageView
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
             android:src="@drawable/ic_launcher"
             android:id="@+id/ic_launcher"
             android:layout_gravity="center_horizontal" />
 
 
-        <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:hint="Correo"
             android:textSize="16dp"
-            android:padding="10dp"
-            android:textColor="#535353"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="25dp"
-            android:background="#e2e2e2"
+            android:background="#00ffffff"
             android:id="@+id/loginEmail"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            app:met_clearButton="true"
+            app:met_floatingLabel="highlight"
+            app:met_textColorHint="#6e6e6e"
+            app:met_baseColor="#6e6e6e"
+            app:met_primaryColor="#6e6e6e"
+            app:met_errorColor="#6e6e6e"/>
 
-
-        <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Contraseña"
             android:textSize="16dp"
-            android:textColor="#535353"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:background="#e2e2e2"
-            android:padding="10dp"
+            android:background="#00ffffff"
             android:id="@+id/loginPassword"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            app:met_clearButton="true"
+            app:met_floatingLabel="highlight"
+            app:met_textColorHint="#6e6e6e"
+            app:met_baseColor="#6e6e6e"
+            app:met_primaryColor="#6e6e6e"
+            app:met_errorColor="#6e6e6e"/>
+
+
 
 
         <Button
@@ -79,12 +84,11 @@
 
             <Button
                 android:id="@+id/btnLogin"
-                android:layout_margin="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="16dp"
-                android:background="@drawable/rb_iniciar_sesion"
+                android:background="#a6002d"
                 android:textColor="#ffffff"
                 android:textAllCaps="false"
                 android:text="Iniciar" />
