@@ -57,7 +57,7 @@ public class Login extends Activity {
     private static final String REG_ID = "regId";
     private static final String TAG = "Register Activity";
 
-    /*hola*/
+
 
 
     @Override
