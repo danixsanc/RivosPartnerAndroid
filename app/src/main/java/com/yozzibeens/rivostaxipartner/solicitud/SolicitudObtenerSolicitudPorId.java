@@ -1,13 +1,12 @@
-package com.yozzibeens.rivostaxipartner.respuesta;
+package com.yozzibeens.rivostaxipartner.solicitud;
 
-import com.yozzibeens.rivostaxipartner.modelo.Cabbie;
+/**
+ * Created by Antonio on 04/10/2016.
+ */
 
-import java.util.ArrayList;
+public class SolicitudObtenerSolicitudPorId {
 
-
-public class ResultadoVerificarTodo {
-
-    private boolean Data;
+    private boolean Data; //PENDIENTE
     private boolean IsError;
     private String Message;
 
@@ -34,6 +33,4 @@ public class ResultadoVerificarTodo {
     public void setMessage(String message) {
         Message = message;
     }
-
-
 }

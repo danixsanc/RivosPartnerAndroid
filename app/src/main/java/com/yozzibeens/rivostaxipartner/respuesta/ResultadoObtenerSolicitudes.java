@@ -9,8 +9,9 @@ import java.util.ArrayList;
 public class ResultadoObtenerSolicitudes {
 
     private ArrayList<Solicitud> Data;
-    private boolean Error;
+    private boolean IsError;
     private String Message;
+
 
 
 
@@ -23,11 +24,11 @@ public class ResultadoObtenerSolicitudes {
     }
 
     public boolean isError() {
-        return Error;
+        return IsError;
     }
 
     public void setError(boolean error) {
-        Error = error;
+        IsError = error;
     }
 
     public String getMessage() {

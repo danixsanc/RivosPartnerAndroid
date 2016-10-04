@@ -3,15 +3,15 @@ package com.yozzibeens.rivostaxipartner.respuesta;
 
 public class ResultadoCambiarStatus {
 
-    private boolean Error;
+    private boolean IsError;
     private String Message;
 
     public boolean isError() {
-        return Error;
+        return IsError;
     }
 
     public void setError(boolean error) {
-        Error = error;
+        IsError = error;
     }
 
     public String getMessage() {
