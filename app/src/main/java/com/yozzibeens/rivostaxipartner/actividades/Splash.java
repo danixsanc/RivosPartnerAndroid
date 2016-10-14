@@ -47,6 +47,7 @@ public class Splash extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
 
+
         RivosPartnerDB.initializeInstance();
         GoogleCloudMessaging.getInstance(this);
 

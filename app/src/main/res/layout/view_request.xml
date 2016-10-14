@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -8,17 +8,132 @@
     <include layout="@layout/toolbar" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:orientation="vertical">
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="15dp"
+         android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/llContenido"
+            android:layout_width="match_parent"
+            android:layout_height="115dp"
+            android:padding="5dp"
+            android:background="@color/colorPrimary"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingBottom="30dp"
+            android:paddingRight="16dp">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="0.7"
+                android:orientation="vertical">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:src="@color/colorOrigen"
+                    app:civ_border_color="@color/colorBorder"
+                    app:civ_border_width="1dp"/>
+
+                <LinearLayout
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="55dp"
+                    android:background="@color/colorBorder"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                </LinearLayout>
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="15dp"
+                    android:src="@color/colorDestino"
+                    app:civ_border_color="@color/colorBorder"
+                    app:civ_border_width="1dp"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+                        <TextView
+                            android:id="@+id/txtInicio"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:textColor="@color/textColorPrimary"
+                            android:textSize="16dp"
+                            android:hint="Inicio"
+                            android:paddingRight="30dp"
+                            android:textColorHint="#535353"
+                            android:text="Inicio"/>
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorBorder" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp">
+                            <TextView
+                                android:id="@+id/txt_Destino"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:textSize="16dp"
+                                android:textColor="@color/textColorPrimary"
+                                android:paddingRight="30dp"
+                                android:hint="Destino"
+                                android:textColorHint="#535353"
+                                android:text="Destino"/>
+                        </FrameLayout>
+                    </LinearLayout>
+                </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_linea"
+            android:tint="#e4e4e4"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="35dp"
             android:layout_marginRight="15dp">
             <TextView
                 android:layout_width="100dp"
@@ -26,7 +141,6 @@
                 android:text="Nombre: "
                 android:textColor="#000"
                 android:textSize="16dp"/>
-
             <TextView
                 android:id="@+id/txt_Nombre"
                 android:layout_width="wrap_content"
@@ -39,6 +153,8 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_linea"
             android:tint="#e4e4e4"/>
@@ -48,7 +164,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="35dp"
             android:layout_marginRight="15dp">
             <TextView
                 android:layout_width="100dp"
@@ -56,7 +172,6 @@
                 android:text="Solcitud: "
                 android:textColor="#000"
                 android:textSize="16dp"/>
-
             <TextView
                 android:id="@+id/txt_Request_Id"
                 android:layout_width="wrap_content"
@@ -69,6 +184,8 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_linea"
             android:tint="#e4e4e4"/>
@@ -78,7 +195,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="35dp"
             android:layout_marginRight="15dp">
             <TextView
                 android:layout_width="100dp"
@@ -86,7 +203,6 @@
                 android:text="Fecha: "
                 android:textColor="#000"
                 android:textSize="16dp"/>
-
             <TextView
                 android:id="@+id/txt_Fecha"
                 android:layout_width="wrap_content"
@@ -99,6 +215,8 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_linea"
             android:tint="#e4e4e4"/>
@@ -108,7 +226,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="35dp"
             android:layout_marginRight="15dp">
             <TextView
                 android:layout_width="100dp"
@@ -116,7 +234,6 @@
                 android:text="Hora: "
                 android:textColor="#000"
                 android:textSize="16dp"/>
-
             <TextView
                 android:id="@+id/txt_Hora"
                 android:layout_width="wrap_content"
@@ -129,116 +246,46 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_linea"
             android:tint="#e4e4e4"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp">
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Inicio: "
-                android:textColor="#000"
-                android:textSize="16dp"/>
-
-            <TextView
-                android:id="@+id/txt_Inicio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nombre"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16dp"/>
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_linea"
-            android:tint="#e4e4e4"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp">
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Destino: "
-                android:textColor="#000"
-                android:textSize="16dp"/>
-
-            <TextView
-                android:id="@+id/txt_Destino"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nombre"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16dp"/>
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_linea"
-            android:tint="#e4e4e4"/>
-
-
-
-
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center|bottom"
+        android:layout_marginTop="50dp"
         android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/btn_rechazar"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/colorAccent"
-                android:textColor="#000"
-                android:text="Rechazar" />
-
-            <Button
-                android:id="@+id/btn_aceptar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#ffffff"
-                android:background="@color/colorPrimaryDark"
-                android:text="Aceptar" />
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/btn_aceptar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginRight="80dp"
+                    android:layout_weight="1"
+                    android:textColor="#ffffff"
+                    android:background="@color/colorAccent"
+                    android:text="Aceptar" />
+                <Button
+                    android:id="@+id/btn_rechazar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginRight="80dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimaryDark"
+                    android:textColor="#000"
+                    android:text="Rechazar" />
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
 
-
-
 </LinearLayout>
-
-
-
-
-
-
-
