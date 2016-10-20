@@ -42,7 +42,8 @@ public class Nav_Perfil extends AppCompatActivity {
     TextView txt_email_user;
     TextView txt_nombre_user;
     Button btn_modifydata;
-    TextView txt_datos_personales,txt_nombre,txt_email,txt_phone;
+    TextView txt_datos_personales,txt_nombre;
+    TextView txt_email,txt_phone,txt_switch;
     Switch sw_status;
     Gson gson;
     ResultadoCambiarStatus resultadoCambiarStatus;
@@ -73,13 +74,16 @@ public class Nav_Perfil extends AppCompatActivity {
         txt_email_user.setTypeface(RobotoCondensed_Regular);
         txt_nombre_user = (TextView) findViewById(R.id.txt_nombre_user);
         txt_nombre_user.setTypeface(RobotoCondensed_Regular);
-        txt_datos_personales = (TextView) findViewById(R.id.txt_datos_personales);
-        txt_nombre = (TextView) findViewById(R.id.txt_nombre);
-        txt_nombre.setTypeface(RobotoCondensed_Regular);
+        //txt_datos_personales = (TextView) findViewById(R.id.txt_datos_personales);
+        //txt_datos_personales.setTypeface(RobotoCondensed_Regular);
+        //txt_nombre = (TextView) findViewById(R.id.txt_nombre);
+        //txt_nombre.setTypeface(RobotoCondensed_Regular);
         txt_email = (TextView) findViewById(R.id.txt_email);
         txt_email.setTypeface(RobotoCondensed_Regular);
         txt_phone = (TextView) findViewById(R.id.txt_phone);
         txt_phone.setTypeface(RobotoCondensed_Regular);
+        txt_switch = (TextView) findViewById(R.id.txt_switch);
+        txt_switch.setTypeface(RobotoCondensed_Regular);
 
 
         sw_status = (Switch) findViewById(R.id.sw_status);

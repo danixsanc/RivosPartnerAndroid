@@ -11,8 +11,7 @@
         android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:padding="30dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorPrimary"
         android:gravity="center"
         android:elevation="2dp"
         android:orientation="vertical">
@@ -30,8 +29,8 @@
 
             <ImageView
                 android:id="@+id/imgPerfilUsuario"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:src="@drawable/logo"/>
 
         </LinearLayout>
@@ -44,25 +43,25 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/txtNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="14sp"
+                android:text="Nombre"/>
+
+            <TextView
                 android:id="@+id/txtCorreo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/itemDrawer"
+                android:textColor="@color/textColorPrimary"
                 android:layout_marginBottom="5dp"
                 android:textSize="14sp"
                 android:textStyle="bold"
 
                 android:text="Correo" />
-
-            <TextView
-                android:id="@+id/txtNombre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/itemDrawer"
-                android:textSize="14sp"
-                android:text="Nombre"/>
 
         </LinearLayout>
 
@@ -74,7 +73,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorPrimary"
         android:orientation="vertical">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -87,10 +86,10 @@
             android:layout_height="60dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:src="@drawable/ic_local_taxi_black_24dp"
-                android:tint="@color/itemDrawer"
+                android:tint="@color/textColorPrimary"
                 android:layout_marginLeft="16dp"/>
 
             <TextView
@@ -98,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Solicitudes"
-                android:textColor="@color/itemDrawer"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="14dp"/>
 
         </LinearLayout>
@@ -107,7 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_linea"
-            android:tint="@color/colorPrimary"/>
+            android:tint="@color/line_drawer"/>
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/nav_historial"
@@ -119,10 +118,10 @@
             android:layout_height="60dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:src="@drawable/ic_history_black_24dp"
-                android:tint="@color/itemDrawer"
+                android:tint="@color/textColorPrimary"
                 android:layout_marginLeft="16dp"/>
 
             <TextView
@@ -130,7 +129,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Historial"
-                android:textColor="@color/itemDrawer"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="14dp"/>
 
         </LinearLayout>
@@ -139,7 +138,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_linea"
-            android:tint="@color/colorPrimary"/>
+            android:tint="@color/line_drawer"/>
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/nav_perfil"
@@ -151,10 +150,10 @@
             android:layout_height="60dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:src="@drawable/ic_person_black_24dp"
-                android:tint="@color/itemDrawer"
+                android:tint="@color/textColorPrimary"
                 android:layout_marginLeft="16dp"/>
 
             <TextView
@@ -162,7 +161,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Perfil"
-                android:textColor="@color/itemDrawer"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="14dp"/>
 
         </LinearLayout>
@@ -171,7 +170,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_linea"
-            android:tint="@color/colorPrimary"/>
+            android:tint="@color/line_drawer"/>
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/nav_ayuda"
@@ -183,10 +182,10 @@
             android:layout_height="60dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:src="@drawable/ic_live_help_black_24dp"
-                android:tint="@color/itemDrawer"
+                android:tint="@color/textColorPrimary"
                 android:layout_marginLeft="16dp"/>
 
             <TextView
@@ -194,7 +193,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Ayuda"
-                android:textColor="@color/itemDrawer"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="14dp"/>
 
         </LinearLayout>
@@ -203,7 +202,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_linea"
-            android:tint="@color/colorPrimary"/>
+            android:tint="@color/line_drawer"/>
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/CerrarSesion"
@@ -215,10 +214,10 @@
             android:layout_height="60dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:src="@drawable/ic_power_settings_new_black_24dp"
-                android:tint="@color/itemDrawer"
+                android:tint="@color/textColorPrimary"
                 android:layout_marginLeft="16dp"/>
 
             <TextView
@@ -226,7 +225,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Cerrar Sesion"
-                android:textColor="@color/itemDrawer"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="14dp"/>
 
         </LinearLayout>
@@ -235,7 +234,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_linea"
-            android:tint="@color/colorPrimary"/>
+            android:tint="@color/line_drawer"/>
 
 
     </LinearLayout>

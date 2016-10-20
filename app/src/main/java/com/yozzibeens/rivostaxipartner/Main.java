@@ -2,7 +2,9 @@ package com.yozzibeens.rivostaxipartner;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
@@ -15,9 +17,9 @@ import android.location.LocationManager;
 import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,10 +27,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -61,6 +63,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class Main extends AppCompatActivity implements LocationListener {
 
     private DrawerMenu mDrawerMenu;
@@ -71,10 +75,14 @@ public class Main extends AppCompatActivity implements LocationListener {
     int client_id[] = new int[0];
     int request_id[] = new int[0];
     String gcm_id[] = new String[0];
-    Button btn_en_proceso;
-    Button btn_avisar;
-    Button btn_qrcode;
+    LinearLayout btn_en_proceso;
+    LinearLayout btn_avisar;
+    LinearLayout btn_qrcode;
+    LinearLayout linear_btn;
     TextView txt_pendientes;
+    TextView txt_btnSolicitud;
+    TextView txt_btnCodigo;
+    TextView txt_btnAvisar;
     private Runnable runnable;
     private Handler handler;
     private Gson gson;
@@ -96,6 +104,7 @@ public class Main extends AppCompatActivity implements LocationListener {
         setContentView(R.layout.main);
 
         this.gson = new Gson();
+        this.resultadoVerificarTodo = new ResultadoVerificarTodo();
 
 
         final Preferencias preferencias = new Preferencias(getApplicationContext());
@@ -138,12 +147,19 @@ public class Main extends AppCompatActivity implements LocationListener {
             Typeface RobotoCondensed_Regular = Typeface.createFromAsset(getAssets(), "RobotoCondensed-Regular.ttf");
 
 
-            btn_en_proceso = (Button) findViewById(R.id.btn_en_proceso);
-            btn_en_proceso.setTypeface(RobotoCondensed_Regular);
+            btn_en_proceso = (LinearLayout) findViewById(R.id.btn_en_proceso);
+            txt_btnSolicitud = (TextView) findViewById(R.id.txt_btnSolicitud);
+            txt_btnSolicitud.setTypeface(RobotoCondensed_Regular);
 
-            btn_avisar = (Button) findViewById(R.id.btn_avisar);
-            btn_qrcode = (Button) findViewById(R.id.btn_qrcode);
+            btn_avisar = (LinearLayout) findViewById(R.id.btn_avisar);
+            txt_btnAvisar = (TextView) findViewById(R.id.txt_btnAvisar);
+            txt_btnAvisar.setTypeface(RobotoCondensed_Regular);
 
+            btn_qrcode = (LinearLayout) findViewById(R.id.btn_qrcode);
+            txt_btnCodigo = (TextView) findViewById(R.id.txt_btnCodigo);
+            txt_btnCodigo.setTypeface(RobotoCondensed_Regular);
+
+            linear_btn = (LinearLayout) findViewById(R.id.linear_btn);
 
             txt_pendientes = (TextView) findViewById(R.id.text_pendientes);
             txt_pendientes.setTypeface(RobotoCondensed_Regular);
@@ -164,8 +180,15 @@ public class Main extends AppCompatActivity implements LocationListener {
                     oDataN.setMessage("Tu taxista ha llegado por ti.");
                     oDataN.setType("C");
                     PushNotificationWebService(gson.toJson(oDataN));
+
+                    SweetAlertDialog dialog = new SweetAlertDialog(Main.this, SweetAlertDialog.SUCCESS_TYPE);
+                    dialog.setTitleText("Mensaje enviado!").show();
                 }
+
             });
+
+
+
 
             btn_qrcode.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -184,6 +207,7 @@ public class Main extends AppCompatActivity implements LocationListener {
                 }
             });
         }
+
     }
 
     public class MyCurrentLoctionListener implements LocationListener {
@@ -324,7 +348,7 @@ public class Main extends AppCompatActivity implements LocationListener {
                                 listrequestArray.add(new ListRequest(fecha + " a las " + hora));
                                 client_id[i] = Integer.parseInt(solicitudes.get(i).getClient_Id());
                                 request_id[i] = Integer.parseInt(solicitudes.get(i).getRequest_Id());
-                                gcm_id[i] = solicitudes.get(i).getGcm_id();
+                                gcm_id[i] = solicitudes.get(i).getGcm_Id();
                             }
                         }
                     }
@@ -393,9 +417,10 @@ public class Main extends AppCompatActivity implements LocationListener {
                     if (listrequestArray.size() == 0)
                     {
                         txt_pendientes.setVisibility(View.GONE);
-                        btn_en_proceso.setVisibility(View.VISIBLE);
+                        linear_btn.setVisibility(View.VISIBLE);
+                        /*btn_en_proceso.setVisibility(View.VISIBLE);
                         btn_avisar.setVisibility(View.VISIBLE);
-                        btn_qrcode.setVisibility(View.VISIBLE);
+                        btn_qrcode.setVisibility(View.VISIBLE);*/
                         listrequestList.setVisibility(View.GONE);
                     }
                     else{

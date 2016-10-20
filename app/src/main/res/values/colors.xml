@@ -18,8 +18,10 @@
     <color name="grayAccent">#cacaca</color>
     <color name="graySelected">#8e8e8e</color>
 
-    <color name="colorAccent">#189f5a</color>
+    <color name="colorAccent">#f0514b</color>
     <color name="colorBorder">#dcdcdc</color>
+
+    <color name="line_drawer">#d9d8d8</color>
 
     <color name="colorOrigen">#D3E618</color>
     <color name="colorDestino">#34CC07</color>

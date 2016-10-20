@@ -21,6 +21,7 @@
         </android.support.design.widget.AppBarLayout>
 
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -38,47 +39,159 @@
                 android:textSize="18dp"
                 android:textColor="#565656"/>
 
-            <Button
-                android:id="@+id/btn_en_proceso"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:visibility="gone"
-                android:drawableLeft="@drawable/ic_local_taxi_black_24dp"
-                android:drawableTint="#fff"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp"
-                android:text="Ver solicitud en proceso"
-                android:textColor="#ffffff"
-                android:background="@color/colorPrimary"
-                android:layout_margin="20dp"/>
+                android:id="@+id/linear_btn">
 
-            <Button
-                android:id="@+id/btn_avisar"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:visibility="gone"
-                android:drawableLeft="@drawable/ic_done_white_24dp"
-                android:drawableTint="#fff"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp"
-                android:text="Avisar que ya llegue"
-                android:textColor="#ffffff"
-                android:background="@color/colorPrimary"
-                android:layout_margin="20dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp">
+                    <LinearLayout
+                        android:id="@+id/btn_en_proceso"
+                        android:layout_width="match_parent"
+                        android:layout_height="155dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
+                        android:background="#00695c"
+                        android:orientation="vertical"
+                        android:elevation="2dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_local_taxi_white_48dp"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/txt_btnSolicitud"
+                            android:text="Ver solicitud en proceso"
+                            android:textSize="22dp"
+                            android:layout_marginBottom="2dp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="center"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_avisar"
+                        android:layout_width="match_parent"
+                        android:layout_height="155dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorAccent"
+                        android:orientation="vertical"
+                        android:elevation="2dp"
+                        android:gravity="center">
+
+                        <ImageView
+                             android:layout_width="50dp"
+                             android:layout_height="50dp"
+                             android:src="@drawable/ic_check_white_48dp"
+                             android:layout_gravity="center"
+                             android:layout_marginBottom="10dp"
+                             android:layout_marginTop="10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/txt_btnAvisar"
+                            android:text="Avisar que ya llegué"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_marginBottom="2dp"
+                            android:textSize="22dp"
+                            android:textAlignment="center"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/btn_qrcode"
+                        android:layout_width="match_parent"
+                        android:layout_height="125dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:background="#3a6086"
+                        android:orientation="vertical"
+                        android:elevation="2dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_fullscreen_white_48dp"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/txt_btnCodigo"
+                            android:text="Leer codigo QR"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="22dp"
+                            android:textAlignment="center"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+                <!--<Button
+                    android:id="@+id/btn_en_proceso"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="125dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="5dp"
+                    android:visibility="visible"
+                    android:paddingTop="20dp"
+                    android:drawableTop="@drawable/ic_local_taxi_white_24dp"
+                    android:drawableTint="@color/colorPrimary"
+                    android:text="Ver solicitud en proceso"
+                    android:textColor="@color/colorPrimary"
+                    android:background="#00695c"/>
+
+                <Button
+                    android:id="@+id/btn_avisar"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_height="125dp"
+                    android:visibility="visible"
+                    android:drawableLeft="@drawable/ic_done_white_24dp"
+                    android:drawableTint="@color/colorPrimary"
+                    android:text="Avisar que ya llegue"
+                    android:textColor="@color/colorPrimary"
+                    android:background="@color/colorAccent"/>
 
             <Button
                 android:id="@+id/btn_qrcode"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:drawableLeft="@drawable/ic_live_help_black_24dp"
-                android:drawableTint="#fff"
+                android:drawableLeft="@drawable/ic_live_help_white_24dp"
+                android:drawableTint="@color/textColorPrimary"
                 android:visibility="gone"
                 android:paddingLeft="30dp"
                 android:paddingRight="30dp"
                 android:text="Leer Codigo qr"
-                android:textColor="#ffffff"
-                android:background="@color/colorPrimary"
-                android:layout_margin="20dp"/>
+                android:textColor="@color/colorPrimary"
+                android:background="@color/colorAccent"
+                android:layout_margin="20dp"/>-->
 
             <ListView
                 android:layout_width="match_parent"
@@ -86,6 +199,7 @@
                 android:id="@+id/list_solicitudes" />
 
         </LinearLayout>
+
 
     </android.support.design.widget.CoordinatorLayout>
 

@@ -22,6 +22,8 @@
             android:background="@color/colorPrimary"
             android:baselineAligned="false"
             android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:paddingBottom="30dp"
             android:paddingRight="16dp">
 
@@ -78,7 +80,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp">
                         <TextView
-                            android:id="@+id/txtInicio"
+                            android:id="@+id/txt_Inicio"
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:layout_marginTop="20dp"
@@ -146,7 +148,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ID"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="16dp"/>
         </LinearLayout>
 
@@ -177,7 +179,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nombre"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="16dp"/>
         </LinearLayout>
 
@@ -208,7 +210,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Telefono"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="16dp"/>
         </LinearLayout>
 
@@ -239,7 +241,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nombre"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="16dp"/>
         </LinearLayout>
 

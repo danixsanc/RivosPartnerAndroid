@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import com.google.gson.Gson;
+import com.yozzibeens.rivostaxipartner.R;
 import com.yozzibeens.rivostaxipartner.listener.AsyncTaskListener;
 import com.yozzibeens.rivostaxipartner.listener.ServicioAsyncService;
 import com.yozzibeens.rivostaxipartner.modelosApp.DatosSolicitud;
