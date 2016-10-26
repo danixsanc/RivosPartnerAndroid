@@ -18,6 +18,7 @@ import com.yozzibeens.rivostaxipartner.listener.AsyncTaskListener;
 import com.yozzibeens.rivostaxipartner.listener.ServicioAsyncService;
 import com.yozzibeens.rivostaxipartner.modelosApp.DatosSolicitud;
 import com.yozzibeens.rivostaxipartner.modelosApp.Solicitud;
+import com.yozzibeens.rivostaxipartner.modelosApp.SolicitudRecibida;
 import com.yozzibeens.rivostaxipartner.respuesta.ResultadoAceptarSolicitud;
 import com.yozzibeens.rivostaxipartner.respuesta.ResultadoNotificacion;
 import com.yozzibeens.rivostaxipartner.respuesta.ResultadoObtenerDatosSolicitud;
@@ -87,13 +88,15 @@ public class View_Request extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null){
-            client_id = Integer.valueOf(bundle.getString("Client_Id"));
-            request_id = Integer.valueOf(bundle.getString("Request_Id"));
+            SolicitudRecibida sr= (SolicitudRecibida) bundle.get("Solicitud");
 
-            Gcm_Id = bundle.getString("Gcm_Id");
-            client_list = bundle.getIntArray("List_Client");
-            request_list = bundle.getIntArray("List_Request");
-            gcm_id_list = bundle.getStringArray("List_gcm_id");
+            client_id = Integer.valueOf(sr.getClient_Id());
+            request_id = Integer.valueOf(sr.getRequest_Id());
+
+            Gcm_Id = bundle.getString(sr.getGcm_Id());
+            client_list = sr.getList_Client();
+            request_list = sr.getList_Request();
+            gcm_id_list = sr.getList_gcm_id();
         }
 
         SolicitudObtenerDatosSolicitud oData = new SolicitudObtenerDatosSolicitud();

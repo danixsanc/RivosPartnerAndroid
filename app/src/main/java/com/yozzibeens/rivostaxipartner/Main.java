@@ -40,6 +40,7 @@ import com.yozzibeens.rivostaxipartner.fragmentos.DrawerMenu;
 import com.yozzibeens.rivostaxipartner.listener.AsyncTaskListener;
 import com.yozzibeens.rivostaxipartner.listener.ServicioAsyncService;
 import com.yozzibeens.rivostaxipartner.modelosApp.Solicitud;
+import com.yozzibeens.rivostaxipartner.modelosApp.SolicitudRecibida;
 import com.yozzibeens.rivostaxipartner.respuesta.ResultadoAgregarCoordenadasTaxista;
 import com.yozzibeens.rivostaxipartner.respuesta.ResultadoConsultarReferencia;
 import com.yozzibeens.rivostaxipartner.respuesta.ResultadoNotificacion;
@@ -48,6 +49,7 @@ import com.yozzibeens.rivostaxipartner.respuesta.ResultadoVerificarTodo;
 import com.yozzibeens.rivostaxipartner.servicios.WebService;
 import com.yozzibeens.rivostaxipartner.solicitud.SolicitudAgregarCoordenadasTaxista;
 import com.yozzibeens.rivostaxipartner.solicitud.SolicitudConsultarReferencia;
+import com.yozzibeens.rivostaxipartner.solicitud.SolicitudMensajeAyuda;
 import com.yozzibeens.rivostaxipartner.solicitud.SolicitudNotificacion;
 import com.yozzibeens.rivostaxipartner.solicitud.SolicitudObtenerSolicitudes;
 import com.yozzibeens.rivostaxipartner.solicitud.SolicitudVerificarTodo;
@@ -167,6 +169,7 @@ public class Main extends AppCompatActivity implements LocationListener {
 
             SolicitudObtenerSolicitudes oData = new SolicitudObtenerSolicitudes();
             oData.setCabbie_Id(Cabbie_Id);
+            oData.setOnProcess("1");
             GetRequestWebService(gson.toJson(oData));
 
             //VerifyAll(Cabbie_Id);
@@ -546,12 +549,17 @@ public class Main extends AppCompatActivity implements LocationListener {
                     @Override
                     public void onClick(View v) {
                         Intent i = new Intent(v.getContext(), View_Request.class);
-                        i.putExtra("Client_Id", String.valueOf(client_id[position]));
-                        i.putExtra("Request_Id", String.valueOf(request_id[position]));
-                        i.putExtra("Gcm_Id", String.valueOf(gcm_id[position]));
-                        i.putExtra("List_Client", client_id);
-                        i.putExtra("List_Request", request_id);
-                        i.putExtra("List_gcm_id", gcm_id);
+
+
+                        SolicitudRecibida sr = new SolicitudRecibida();
+                        sr.setClient_Id(String.valueOf(client_id[position]));
+                        sr.setRequest_Id(String.valueOf(request_id[position]));
+                        sr.setGcm_Id(String.valueOf(gcm_id[position]));
+                        sr.setList_Client(client_id);
+                        sr.setList_Request(request_id);
+                        sr.setList_gcm_id(gcm_id);
+
+                        i.putExtra("Solicitud", sr);
                         startActivityForResult(i, 312);
                     }
                 });

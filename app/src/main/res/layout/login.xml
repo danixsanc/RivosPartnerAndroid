@@ -36,7 +36,7 @@
             app:met_floatingLabel="highlight"
             app:met_textColorHint="#6e6e6e"
             app:met_baseColor="#6e6e6e"
-            app:met_primaryColor="#6e6e6e"
+            app:met_primaryColor="@color/textColorPrimary"
             app:met_errorColor="#6e6e6e"/>
 
         <com.rengwuxian.materialedittext.MaterialEditText
@@ -51,7 +51,7 @@
             app:met_floatingLabel="highlight"
             app:met_textColorHint="#6e6e6e"
             app:met_baseColor="#6e6e6e"
-            app:met_primaryColor="#6e6e6e"
+            app:met_primaryColor="@color/textColorPrimary"
             app:met_errorColor="#6e6e6e"/>
 
 

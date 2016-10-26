@@ -18,14 +18,14 @@
 
 
 
-                <TextView
+                <!--<TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#ff4e4e4e"
                     android:layout_margin="10dp"
                     android:textSize="20dp"
                     android:text="Preguntas Frecuentes"
-                    android:id="@+id/textView3" />
+                    android:id="@+id/textView3" />-->
 
 
                 <TextView

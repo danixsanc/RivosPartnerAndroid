@@ -6,7 +6,8 @@ package com.yozzibeens.rivostaxipartner.servicios;
 public class WebService {
 
     //public static final String Get_Cabbie_CoordinatesWebService = "http://appm.rivosservices.com/taxi/Get_Cabbie_Coordinates.php";
-    public static final String Get_RequestWebService = "http://appm.rivosservices.com/taxi/Get_Request.php";
+    //public static final String Get_RequestWebService = "http://appm.rivosservices.com/taxi/Get_Request.php";
+    public static final String Get_RequestWebService = "http://sistema.rivosservices.com/test/getRequests";
     public static final String Get_Request_On_ProcessWebService = "http://appm.rivosservices.com/taxi/Get_Request_On_Process.php";
     //public static final String Register_GcmIdWebService = "http://appm.rivosservices.com/taxi/Register_GcmId.php";
     public static final String NotificationWebService = "http://appm.rivosservices.com/webservices/push_notifications.php";
