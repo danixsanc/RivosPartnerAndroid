@@ -29,6 +29,8 @@ import com.yozzibeens.rivostaxipartner.controlador.CabbieController;
 import com.yozzibeens.rivostaxipartner.modelo.Cabbie;
 import com.yozzibeens.rivostaxipartner.utilerias.Preferencias;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 
 public class DrawerMenu extends Fragment {
 
@@ -136,7 +138,31 @@ public class DrawerMenu extends Fragment {
                 @Override
                 public void onClick(View view) {
 
-                    AlertDialog.Builder dialog1 = new AlertDialog.Builder(getActivity(), R.style.AlertDialogStyle);
+                    SweetAlertDialog dialog = new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Cerrar sesion")
+                            .setContentText("¿Seguro que desea cerrar sesión?")
+                            .setConfirmText("Si, salir")
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener(){
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    preferencias.setSesion(true);
+                                    CabbieController cabbieController = new CabbieController(getActivity().getApplicationContext());
+                                    cabbieController.eliminarTodo();
+                                    Intent intent = new Intent(getActivity(), Main.class);
+                                    startActivity(intent);
+                                    getActivity().finish();
+                                }
+                            })
+                            .setCancelText("Cancelar")
+                            .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener(){
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    sDialog.cancel();
+                                }
+                            });
+                    dialog.show();
+
+                    /*AlertDialog.Builder dialog1 = new AlertDialog.Builder(getActivity());
                     dialog1.setMessage("¿Cerrar Sesion?");
                     dialog1.setCancelable(false);
                     dialog1.setPositiveButton("Si", new DialogInterface.OnClickListener() {
@@ -158,7 +184,7 @@ public class DrawerMenu extends Fragment {
                             dialog.cancel();
                         }
                     });
-                    dialog1.show();
+                    dialog1.show();*/
 
 
 

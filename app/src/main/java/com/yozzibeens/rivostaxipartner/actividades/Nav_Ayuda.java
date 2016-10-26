@@ -32,6 +32,8 @@ import com.yozzibeens.rivostaxipartner.utilerias.Preferencias;
 
 import java.util.HashMap;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 
 /**
  * Created by danixsanc on 12/01/2016.
@@ -147,7 +149,10 @@ public class Nav_Ayuda extends AppCompatActivity {
             public void onTaskComplete(HashMap<String, Object> result) {
                 progressdialog.dismiss();
                 String messageError = resultadoMensajeAyuda.getMessage();
-                AlertDialog.Builder dialog = new AlertDialog.Builder(Nav_Ayuda.this, R.style.AlertDialogStyle);
+
+                SweetAlertDialog dialog = new SweetAlertDialog(Nav_Ayuda.this, SweetAlertDialog.SUCCESS_TYPE);
+                dialog.setTitleText("Mensaje enviado!").show();
+                /*AlertDialog.Builder dialog = new AlertDialog.Builder(Nav_Ayuda.this, R.style.AlertDialogStyle);
                 dialog.setMessage(messageError);
                 dialog.setCancelable(true);
                 dialog.setNegativeButton("OK", new DialogInterface.OnClickListener()
@@ -157,7 +162,7 @@ public class Nav_Ayuda extends AppCompatActivity {
                         dialog.cancel();
                     }
                 });
-                dialog.show();
+                dialog.show();*/
             }
 
             @Override

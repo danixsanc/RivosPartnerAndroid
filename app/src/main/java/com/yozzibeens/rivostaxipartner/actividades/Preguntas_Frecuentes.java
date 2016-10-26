@@ -3,17 +3,23 @@ package com.yozzibeens.rivostaxipartner.actividades;
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.yozzibeens.rivostaxipartner.R;
 
-public class Preguntas_Frecuentes extends Activity {
+public class Preguntas_Frecuentes extends AppCompatActivity {
 
     TextView textView3,textView2;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preguntas_frecuentes);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Typeface RobotoCondensed_Regular = Typeface.createFromAsset(getAssets(), "RobotoCondensed-Regular.ttf");
 

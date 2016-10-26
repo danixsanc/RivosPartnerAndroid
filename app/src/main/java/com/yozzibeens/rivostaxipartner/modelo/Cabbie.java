@@ -11,6 +11,7 @@ public class Cabbie {
     private String Name;
     private String Email;
     private String Phone;
+    private String Image;
 
     public Cabbie() {
     }
@@ -19,12 +20,13 @@ public class Cabbie {
         this.id = id;
     }
 
-    public Cabbie(Long id, String Cabbie_Id, String Name, String Email, String Phone) {
+    public Cabbie(Long id, String Cabbie_Id, String Name, String Email, String Phone, String Image) {
         this.id = id;
         this.Cabbie_Id = Cabbie_Id;
         this.Name = Name;
         this.Email = Email;
         this.Phone = Phone;
+        this.Image = Image;
     }
 
     public Long getId() {
@@ -65,6 +67,14 @@ public class Cabbie {
 
     public void setPhone(String Phone) {
         this.Phone = Phone;
+    }
+
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String Image) {
+        this.Image = Image;
     }
 
 }

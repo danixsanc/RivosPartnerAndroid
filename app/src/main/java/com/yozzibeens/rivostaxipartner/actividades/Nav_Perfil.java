@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -32,6 +34,8 @@ import com.yozzibeens.rivostaxipartner.utilerias.Preferencias;
 
 import java.util.HashMap;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 /**
  * Created by danixsanc on 12/01/2016.
@@ -41,6 +45,7 @@ public class Nav_Perfil extends AppCompatActivity {
     TextView txt_phone_user;
     TextView txt_email_user;
     TextView txt_nombre_user;
+    CircleImageView imgPerfilTaxista;
     Button btn_modifydata;
     TextView txt_datos_personales,txt_nombre;
     TextView txt_email,txt_phone,txt_switch;
@@ -74,16 +79,15 @@ public class Nav_Perfil extends AppCompatActivity {
         txt_email_user.setTypeface(RobotoCondensed_Regular);
         txt_nombre_user = (TextView) findViewById(R.id.txt_nombre_user);
         txt_nombre_user.setTypeface(RobotoCondensed_Regular);
-        //txt_datos_personales = (TextView) findViewById(R.id.txt_datos_personales);
-        //txt_datos_personales.setTypeface(RobotoCondensed_Regular);
-        //txt_nombre = (TextView) findViewById(R.id.txt_nombre);
-        //txt_nombre.setTypeface(RobotoCondensed_Regular);
+
         txt_email = (TextView) findViewById(R.id.txt_email);
         txt_email.setTypeface(RobotoCondensed_Regular);
         txt_phone = (TextView) findViewById(R.id.txt_phone);
         txt_phone.setTypeface(RobotoCondensed_Regular);
         txt_switch = (TextView) findViewById(R.id.txt_switch);
         txt_switch.setTypeface(RobotoCondensed_Regular);
+
+        imgPerfilTaxista = (CircleImageView) findViewById(R.id.imgPerfilTaxista);
 
 
         sw_status = (Switch) findViewById(R.id.sw_status);
@@ -143,6 +147,12 @@ public class Nav_Perfil extends AppCompatActivity {
         txt_email_user.setText(Correo);
         txt_nombre_user.setText(Nombre);
         txt_phone_user.setText(Telefono);
+
+        String Image = cabbie.getImage();
+        //String base = solicitud.getImage();
+        byte[] imageAsBytes = Base64.decode(Image.getBytes(), Base64.DEFAULT);
+        imgPerfilTaxista.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
+
 
 
     }

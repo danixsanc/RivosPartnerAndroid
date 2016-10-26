@@ -28,17 +28,6 @@
             android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <TextView
-                android:id="@+id/text_pendientes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No hay pendientes."
-                android:layout_marginTop="30dp"
-                android:visibility="gone"
-                android:layout_gravity="center"
-                android:textSize="18dp"
-                android:textColor="#565656"/>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -150,7 +139,18 @@
                 </LinearLayout>
             </LinearLayout>
 
-                <!--<Button
+            <TextView
+                android:id="@+id/text_pendientes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No hay pendientes."
+                android:layout_marginTop="30dp"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:textSize="18dp"
+                android:textColor="#565656"/>
+
+            <!--<Button
                     android:id="@+id/btn_en_proceso"
                     android:layout_width="match_parent"
                     android:layout_weight="1"

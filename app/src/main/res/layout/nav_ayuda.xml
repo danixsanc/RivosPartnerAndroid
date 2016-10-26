@@ -1,171 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
 
-            <include layout="@layout/toolbar" />
+    <include layout="@layout/toolbar" />
 
-            <com.balysv.materialripple.MaterialRippleLayout
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                app:mrl_rippleOverlay="true"
-                app:mrl_rippleColor="#9b9b9b"
-                app:mrl_rippleAlpha="0.2"
-                app:mrl_rippleDelayClick="false"
-                app:mrl_rippleHover="true">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_height="match_parent">
 
-                <Button
-                    android:id="@+id/btn_makecall"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:paddingLeft="30dp"
-                    android:textAllCaps="false"
-                    android:paddingRight="30dp"
-                    android:textSize="16dp"
-                    android:drawableLeft="@drawable/ic_phone_black_24dp"
-                    android:background="@color/transparent"
-                    android:textColor="@color/textColorPrimary"
-                    android:text="Asistencia telefonica" />
-
-            </com.balysv.materialripple.MaterialRippleLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginLeft="18dp"
-                android:background="@color/textColorPrimary"/>
-
-            <com.balysv.materialripple.MaterialRippleLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                app:mrl_rippleOverlay="true"
-                app:mrl_rippleColor="#9b9b9b"
-                app:mrl_rippleAlpha="0.2"
-                app:mrl_rippleDelayClick="false"
-                app:mrl_rippleHover="true">
-
-                <Button
-                    android:id="@+id/btn_faqs"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="30dp"
-                    android:autoLink="web"
-                    android:clickable="true"
-                    android:textSize="16dp"
-                    android:textAllCaps="false"
-                    android:textColor="@color/textColorPrimary"
-                    android:onClick="goTopage"
-                    android:drawableLeft="@drawable/ic_question_answer_black_24dp"
-                    android:background="@color/transparent"
-                    android:text="Preguntas frecuentes" />
-
-            </com.balysv.materialripple.MaterialRippleLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginLeft="18dp"
-                android:background="@color/textColorPrimary"
-                android:layout_marginBottom="40dp"/>
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="@color/colorPrimary">
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:textColor="@color/textColorPrimary"
-                android:textStyle="bold"
-                android:layout_marginLeft="20dp"
-                android:text="Enviar mensaje a la base:"
-                android:id="@+id/Txt_Contact_Us" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:elevation="2dp"
+                        android:background="#ffffff">
+
+                        <com.balysv.materialripple.MaterialRippleLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            app:mrl_rippleOverlay="true"
+                            app:mrl_rippleColor="#9b9b9b"
+                            app:mrl_rippleAlpha="0.2"
+                            app:mrl_rippleDelayClick="false"
+                            app:mrl_rippleHover="true">
+
+                            <Button
+                                android:id="@+id/btn_makecall"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:paddingLeft="30dp"
+                                android:textAllCaps="false"
+                                android:paddingRight="30dp"
+                                android:textSize="16dp"
+                                android:drawableLeft="@drawable/ic_phone_black_24dp"
+                                android:background="@color/transparent"
+                                android:textColor="@color/textColorPrimary"
+                                android:text="Asistencia telefonica" />
+
+                        </com.balysv.materialripple.MaterialRippleLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginRight="18dp"
+                            android:layout_marginLeft="18dp"
+                            android:background="@color/textColorPrimary"/>
+
+                        <com.balysv.materialripple.MaterialRippleLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            app:mrl_rippleOverlay="true"
+                            app:mrl_rippleColor="#9b9b9b"
+                            app:mrl_rippleAlpha="0.2"
+                            app:mrl_rippleDelayClick="false"
+                            app:mrl_rippleHover="true">
+
+                            <Button
+                                android:id="@+id/btn_faqs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:paddingLeft="30dp"
+                                android:paddingRight="30dp"
+                                android:autoLink="web"
+                                android:clickable="true"
+                                android:textSize="16dp"
+                                android:textAllCaps="false"
+                                android:textColor="@color/textColorPrimary"
+                                android:onClick="goTopage"
+                                android:drawableLeft="@drawable/ic_question_answer_black_24dp"
+                                android:background="@color/transparent"
+                                android:text="Preguntas frecuentes" />
+
+                        </com.balysv.materialripple.MaterialRippleLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginRight="18dp"
+                            android:layout_marginLeft="18dp"
+                            android:background="@color/textColorPrimary"
+                            android:layout_marginBottom="40dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="160dp"
+                        android:elevation="2dp"
+                        android:background="#ffffff">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/textColorPrimary"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="20dp"
+                            android:text="Enviar mensaje a la base:"
+                            android:id="@+id/Txt_Contact_Us" />
 
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="18dp"
-                android:layout_marginLeft="18dp"
-                android:hint="Asunto"
-                android:textSize="16dp"
-                android:background="#00ffffff"
-                android:id="@+id/etxt_asunto"
-                android:inputType="textEmailAddress"
-                app:met_clearButton="true"
-                app:met_floatingLabel="highlight"
-                app:met_textColorHint="#6e6e6e"
-                app:met_baseColor="@color/textColorPrimary"
-                app:met_primaryColor="@color/textColorPrimary"
-                app:met_errorColor="@color/colorPrimary"/>
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="18dp"
+                            android:layout_marginLeft="18dp"
+                            android:hint="Asunto"
+                            android:textSize="16dp"
+                            android:background="#00ffffff"
+                            android:id="@+id/etxt_asunto"
+                            android:inputType="textEmailAddress"
+                            app:met_clearButton="true"
+                            app:met_floatingLabel="highlight"
+                            app:met_textColorHint="#6e6e6e"
+                            app:met_baseColor="@color/textColorPrimary"
+                            app:met_primaryColor="@color/textColorPrimary"
+                            app:met_errorColor="@color/colorPrimary"/>
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="18dp"
-                android:layout_marginLeft="18dp"
-                android:hint="Mensaje"
-                android:textSize="16dp"
-                android:background="#00ffffff"
-                android:id="@+id/etxt_mensaje"
-                android:inputType="textImeMultiLine"
-                app:met_clearButton="true"
-                app:met_floatingLabel="highlight"
-                app:met_textColorHint="#6e6e6e"
-                app:met_baseColor="@color/textColorPrimary"
-                app:met_primaryColor="@color/textColorPrimary"
-                app:met_errorColor="@color/colorPrimary"/>
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="18dp"
+                            android:layout_marginLeft="18dp"
+                            android:hint="Mensaje"
+                            android:textSize="16dp"
+                            android:background="#00ffffff"
+                            android:id="@+id/etxt_mensaje"
+                            android:inputType="textImeMultiLine"
+                            app:met_clearButton="true"
+                            app:met_floatingLabel="highlight"
+                            app:met_textColorHint="#6e6e6e"
+                            app:met_baseColor="@color/textColorPrimary"
+                            app:met_primaryColor="@color/textColorPrimary"
+                            app:met_errorColor="@color/colorPrimary"/>
 
 
-            <com.balysv.materialripple.MaterialRippleLayout
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                android:layout_gravity="right"
-                app:mrl_rippleOverlay="true"
-                app:mrl_rippleColor="#9b9b9b"
-                app:mrl_rippleAlpha="0.2"
-                app:mrl_rippleDelayClick="false"
-                app:mrl_rippleHover="true">
+                        <com.balysv.materialripple.MaterialRippleLayout
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_gravity="right"
+                            app:mrl_rippleOverlay="true"
+                            app:mrl_rippleColor="#9b9b9b"
+                            app:mrl_rippleAlpha="0.2"
+                            app:mrl_rippleDelayClick="false"
+                            app:mrl_rippleHover="true">
 
-                <Button
-                    android:id="@+id/btn_enviarmensaje"
-                    android:layout_width="160dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="30dp"
-                    android:layout_marginTop="20dp"
-                    android:textSize="16dp"
-                    android:autoLink="web"
-                    android:clickable="true"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorPrimary"
-                    android:onClick="goTopage"
-                    android:drawableLeft="@drawable/ic_speaker_notes_white_24dp"
-                    android:background="@color/colorAccent"
-                    android:text="Enviar" />
+                            <Button
+                                android:id="@+id/btn_enviarmensaje"
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:paddingLeft="30dp"
+                                android:paddingRight="30dp"
+                                android:layout_marginTop="20dp"
+                                android:textSize="16dp"
+                                android:autoLink="web"
+                                android:clickable="true"
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorPrimary"
+                                android:onClick="goTopage"
+                                android:drawableLeft="@drawable/ic_speaker_notes_white_24dp"
+                                android:background="@color/colorAccent"
+                                android:text="Enviar" />
 
-            </com.balysv.materialripple.MaterialRippleLayout>
-        </LinearLayout>
-    </ScrollView>
+                        </com.balysv.materialripple.MaterialRippleLayout>
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>

@@ -28,6 +28,7 @@ public class CabbieDao extends AbstractDao<Cabbie, Long> {
         public final static Property Name = new Property(2, String.class, "Name", false, "NAME");
         public final static Property Email = new Property(3, String.class, "Email", false, "EMAIL");
         public final static Property Phone = new Property(4, String.class, "Phone", false, "PHONE");
+        public final static Property Image = new Property(5, String.class, "Image", false, "IMAGE");
     };
 
 
@@ -47,7 +48,8 @@ public class CabbieDao extends AbstractDao<Cabbie, Long> {
                 "'CABBIE__ID' TEXT," + // 1: Cabbie_Id
                 "'NAME' TEXT," + // 2: Name
                 "'EMAIL' TEXT," + // 3: Email
-                "'PHONE' TEXT);"); // 4: Phone
+                "'PHONE' TEXT," + // 4: Phone
+                "'IMAGE' TEXT);"); // 5: Image
     }
 
     /** Drops the underlying database table. */
@@ -85,6 +87,11 @@ public class CabbieDao extends AbstractDao<Cabbie, Long> {
         if (Phone != null) {
             stmt.bindString(5, Phone);
         }
+ 
+        String Image = entity.getImage();
+        if (Image != null) {
+            stmt.bindString(6, Image);
+        }
     }
 
     /** @inheritdoc */
@@ -101,7 +108,8 @@ public class CabbieDao extends AbstractDao<Cabbie, Long> {
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // Cabbie_Id
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // Name
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // Email
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4) // Phone
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // Phone
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5) // Image
         );
         return entity;
     }
@@ -114,6 +122,7 @@ public class CabbieDao extends AbstractDao<Cabbie, Long> {
         entity.setName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setEmail(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setPhone(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setImage(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
      }
     
     /** @inheritdoc */

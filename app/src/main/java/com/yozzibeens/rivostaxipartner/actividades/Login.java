@@ -98,6 +98,13 @@ public class Login extends Activity {
 
 
         });
+
+        btnOlvidePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     private void LoginWebService(String rawJson) {

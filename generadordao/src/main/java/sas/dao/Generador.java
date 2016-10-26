@@ -20,6 +20,7 @@ public class Generador {
         usuario.addStringProperty("Name");
         usuario.addStringProperty("Email");
         usuario.addStringProperty("Phone");
+        usuario.addStringProperty("Image");
         oPlantillaGenerador.generarController("Cabbie", false);
 
         new DaoGenerator().generateAll(schema, args[0]);

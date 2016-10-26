@@ -123,7 +123,7 @@
                 android:src="@drawable/ic_history_black_24dp"
                 android:tint="@color/textColorPrimary"
                 android:layout_marginLeft="16dp"/>
-
+z
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

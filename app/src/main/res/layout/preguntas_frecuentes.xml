@@ -1,45 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ff4e4e4e"
-            android:layout_margin="10dp"
-            android:textSize="20dp"
-            android:text="Preguntas Frecuentes"
-            android:id="@+id/textView3" />
+    <include layout="@layout/toolbar"/>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ff4e4e4e"
-            android:layout_margin="10dp"
-            android:textSize="12dp"
-            android:text="
-1.- ¿Como solicito un taxi?
-- Una vez dentro de la aplicacion, podras solicitar el taxi (si entraste con facebook, recuerda acabar de llenar los datos en la seccion perfil) dando clcik al boton que dice 'Solicitar', recibiras una llamada con brebedad para confirmar tu ubicacion.
-\n\n
-2.- ¿Como cerrar sesion?
-	-Dentro de la aplicacion en la esquina superior derecha se encuentra un menu, le das click y eliges la opcion 'Cerrar sesion'
-\n\n
-3.- ¿Donde puedo ver mi informacion personal?
-	-Una vez logeado, dentro de la aplicacion, deslisa tu dedo en la pantalla de izquierda a derecha, se abrira un menu,
-	dentro de este hay una seccion llamada perfil, le das clik y hay mismo puedes ver tu informacion personal.
-\n\n
-4.- ¿Puedo editar mi perfil?
-	-Esta funcion aun no se Agrega a la aplicacion, proximamente sera posible.
-"
-            android:id="@+id/textView2" />
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    </LinearLayout>
-</ScrollView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ff4e4e4e"
+                    android:layout_margin="10dp"
+                    android:textSize="20dp"
+                    android:text="Preguntas Frecuentes"
+                    android:id="@+id/textView3" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ff4e4e4e"
+                    android:layout_margin="10dp"
+                    android:textSize="12dp"
+                    android:text="
+        1.- ¿Como solicito un taxi?
+        - Una vez dentro de la aplicacion, podras solicitar el taxi (si entraste con facebook, recuerda acabar de llenar los datos en la seccion perfil) dando clcik al boton que dice 'Solicitar', recibiras una llamada con brebedad para confirmar tu ubicacion.
+        \n\n
+        2.- ¿Como cerrar sesion?\n
+            -Dentro de la aplicacion en la esquina superior derecha se encuentra un menu, le das click y eliges la opcion 'Cerrar sesion'
+        \n\n
+        3.- ¿Donde puedo ver mi informacion personal?\n
+            -Una vez logeado, dentro de la aplicacion, deslisa tu dedo en la pantalla de izquierda a derecha, se abrira un menu,
+            dentro de este hay una seccion llamada perfil, le das clik y hay mismo puedes ver tu informacion personal.
+        \n\n
+        4.- ¿Puedo editar mi perfil?\n
+            -Esta funcion aun no se Agrega a la aplicacion, proximamente sera posible.
+        "
+                    android:id="@+id/textView2" />
+
+            </LinearLayout>
+        </ScrollView>
+</LinearLayout>
