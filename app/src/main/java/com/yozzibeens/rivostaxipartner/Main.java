@@ -74,6 +74,7 @@ public class Main extends AppCompatActivity implements LocationListener {
     ListView listrequestList;
     ListRequestCustomAdapter listRequestAdapter;
     ArrayList<ListRequest> listrequestArray = new ArrayList<ListRequest>();
+    ArrayList<ListRequest> listHoraArray = new ArrayList<ListRequest>();
     int client_id[] = new int[0];
     int request_id[] = new int[0];
     String gcm_id[] = new String[0];
@@ -348,7 +349,8 @@ public class Main extends AppCompatActivity implements LocationListener {
                                 FechasBD fb = new FechasBD();
                                 String fecha = fb.ObtenerFecha(solicitudes.get(i).getDate());
                                 String hora = fb.ObtenerHora(solicitudes.get(i).getDate());
-                                listrequestArray.add(new ListRequest(fecha + " a las " + hora));
+                                listrequestArray.add(new ListRequest(fecha));
+                                listHoraArray.add(new ListRequest(" a las " + hora));
                                 client_id[i] = Integer.parseInt(solicitudes.get(i).getClient_Id());
                                 request_id[i] = Integer.parseInt(solicitudes.get(i).getRequest_Id());
                                 gcm_id[i] = solicitudes.get(i).getGcm_Id();
@@ -541,7 +543,8 @@ public class Main extends AppCompatActivity implements LocationListener {
                 LayoutInflater inflater = getLayoutInflater();
                 row = inflater.inflate(layoutResourceId, parent, false);
                 holder = new UserHolder();
-                holder.textName = (TextView) row.findViewById(R.id.textView1);
+                holder.txtFecha = (TextView) row.findViewById(R.id.textView1);
+                holder.txtHora = (TextView) row.findViewById(R.id.textView2);
                 //holder.btnView = (ImageButton) row.findViewById(R.id.button1);
                 row.setTag(holder);
 
@@ -570,7 +573,8 @@ public class Main extends AppCompatActivity implements LocationListener {
             ListRequest listRequest = data.get(position);
 
 
-            holder.textName.setText(listRequest.getList_Request());
+            holder.txtFecha.setText(listRequest.getList_Request());
+            //holder.txtHora.setText(listHoraArray);
 
             /*holder.btnView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -593,7 +597,8 @@ public class Main extends AppCompatActivity implements LocationListener {
 
 
         class UserHolder {
-            TextView textName;
+            TextView txtFecha;
+            TextView txtHora;
             //ImageButton btnView;
         }
     }
