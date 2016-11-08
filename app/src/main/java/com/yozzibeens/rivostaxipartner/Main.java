@@ -543,8 +543,8 @@ public class Main extends AppCompatActivity implements LocationListener {
                 LayoutInflater inflater = getLayoutInflater();
                 row = inflater.inflate(layoutResourceId, parent, false);
                 holder = new UserHolder();
-                holder.txtFecha = (TextView) row.findViewById(R.id.textView1);
-                holder.txtHora = (TextView) row.findViewById(R.id.textView2);
+                holder.txtFecha = (TextView) row.findViewById(R.id.txtFecha);
+                holder.txtHora = (TextView) row.findViewById(R.id.txtHora);
                 //holder.btnView = (ImageButton) row.findViewById(R.id.button1);
                 row.setTag(holder);
 
