@@ -29,7 +29,7 @@ public class CabbieDao extends AbstractDao<Cabbie, Long> {
         public final static Property Email = new Property(3, String.class, "Email", false, "EMAIL");
         public final static Property Phone = new Property(4, String.class, "Phone", false, "PHONE");
         public final static Property Image = new Property(5, String.class, "Image", false, "IMAGE");
-    };
+    }
 
 
     public CabbieDao(DaoConfig config) {
